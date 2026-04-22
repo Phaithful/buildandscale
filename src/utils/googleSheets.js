@@ -172,11 +172,22 @@
 //                     <p style="margin:0 0 16px;font-size:10px;font-weight:700;letter-spacing:0.18em;
 //                                text-transform:uppercase;color:#85754D;">Event Details</p>
 //                     <table width="100%" cellpadding="0" cellspacing="0" border="0">
-//                       <tr><td style="padding:5px 0;font-size:13px;color:#3a3a5c;">📅&nbsp; <strong>Friday, 30th May 2026</strong></td></tr>
-//                       <tr><td style="padding:5px 0;font-size:13px;color:#3a3a5c;">⏰&nbsp; Registration from <strong>8:00 AM</strong></td></tr>
-//                       <tr><td style="padding:5px 0;font-size:13px;color:#3a3a5c;">📍&nbsp; Peter Mbah Law Auditorium</td></tr>
-//                       <tr><td style="padding:5px 0;font-size:13px;color:#3a3a5c;">🏛️&nbsp; Godfrey Okoye University, Enugu</td></tr>
-//                       <tr><td style="padding:5px 0;font-size:13px;color:#3a3a5c;">🎟️&nbsp; <strong>Free Entry</strong> — QR code required at the door</td></tr>
+//                       <tr>
+//                         <td style="padding:5px 0;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#85754D;width:80px;vertical-align:top;">Date</td>
+//                         <td style="padding:5px 0;font-size:13px;color:#3a3a5c;"><strong>Friday, 30th May 2026</strong></td>
+//                       </tr>
+//                       <tr>
+//                         <td style="padding:5px 0;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#85754D;vertical-align:top;">Time</td>
+//                         <td style="padding:5px 0;font-size:13px;color:#3a3a5c;">Registration from <strong>8:00 AM</strong></td>
+//                       </tr>
+//                       <tr>
+//                         <td style="padding:5px 0;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#85754D;vertical-align:top;">Venue</td>
+//                         <td style="padding:5px 0;font-size:13px;color:#3a3a5c;">Peter Mbah Law Auditorium<br/>Godfrey Okoye University, Enugu</td>
+//                       </tr>
+//                       <tr>
+//                         <td style="padding:5px 0;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#85754D;vertical-align:top;">Entry</td>
+//                         <td style="padding:5px 0;font-size:13px;color:#3a3a5c;"><strong>Free</strong> &mdash; QR code required at the door</td>
+//                       </tr>
 //                     </table>
 //                   </td>
 //                 </tr>
@@ -232,8 +243,7 @@
 // }
 // ================================================================
 
-export const SHEET_URL = 'https://script.google.com/macros/s/AKfycbyqGHumrL7frT8XhK0IbyqrPsTeN81eHGE8QIg7kOMMTqFvJ4I6RLajBCw5zhhG_n1__Q/exec';
-
+export const SHEET_URL = 'https://script.google.com/macros/s/AKfycbyGtQ0EbkaXcEsOkvfRl6-F2MIIVNHWlufVQzxOZ_K6P-1Xjs0C5H5LpFokOnXrew74Nw/exec'
 /**
  * Generates a unique registration ID.
  * Format: BS2026-XXXX-YYYY  (e.g. BS2026-LXK4-F9J2)
