@@ -31,7 +31,7 @@
 // }
 // -----------------------------------------------
 
-export const SHEET_URL = 'YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE';
+export const SHEET_URL = 'https://script.google.com/macros/s/AKfycbzlKV6BbCXrh1CGNIBk4S4C5InB_FmIB7W3liY-ch-2saMgc0toxeK6eUKZSDC-EvZRaA/exec';
 
 export async function submitRegistration(formData) {
   const response = await fetch(SHEET_URL, {

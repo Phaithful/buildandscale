@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRight, MapPin, Calendar, Target } from 'lucide-react';
 import { CONFERENCE_DATE } from '../utils/data';
+import { fetchRegistrations } from '../utils/googleSheets';
 import './Hero.css';
+
+const TOTAL_SEATS = 100;
 
 const SPONSORS = [
   { name: 'Capitis', src: '/images/sponsors/capitis-logo.0fdb9306.svg' },
@@ -23,6 +26,13 @@ const fadeUp = (delay = 0) => ({
 
 export default function Hero() {
   const registrationOpen = new Date() < CONFERENCE_DATE;
+  const [slotsLeft, setSlotsLeft] = useState(null);
+
+  useEffect(() => {
+    fetchRegistrations()
+      .then((rows) => setSlotsLeft(Math.max(0, TOTAL_SEATS - rows.length)))
+      .catch(() => setSlotsLeft(TOTAL_SEATS));
+  }, []);
   return (
     <section className="hero" id="home">
       {/* Background — conference hall image */}
@@ -113,19 +123,28 @@ export default function Hero() {
                   <Target size={22} />
                 </div>
                 <div>
-                  <div className="hero__card-big">100+</div>
-                  <div className="hero__card-sublabel">Expected Attendees</div>
+                  <div className="hero__card-big">
+                    {slotsLeft === null ? '—' : slotsLeft}
+                  </div>
+                  <div className="hero__card-sublabel">
+                    {slotsLeft === 0 ? 'No seats remaining' : 'Seats still available'}
+                  </div>
                 </div>
               </div>
 
-              {/* Satisfaction bar */}
+              {/* Capacity bar */}
               <div className="hero__card-bar-wrap">
                 <div className="hero__card-bar-row">
-                  <span className="hero__card-bar-label">Interest Rate</span>
-                  <span className="hero__card-bar-pct">98%</span>
+                  <span className="hero__card-bar-label">Capacity filled</span>
+                  <span className="hero__card-bar-pct">
+                    {slotsLeft === null ? '...' : `${TOTAL_SEATS - slotsLeft}/${TOTAL_SEATS}`}
+                  </span>
                 </div>
                 <div className="hero__card-bar-track">
-                  <div className="hero__card-bar-fill" />
+                  <div
+                    className="hero__card-bar-fill"
+                    style={{ width: slotsLeft === null ? '0%' : `${((TOTAL_SEATS - slotsLeft) / TOTAL_SEATS) * 100}%` }}
+                  />
                 </div>
               </div>
 

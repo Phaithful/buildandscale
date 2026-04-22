@@ -18,6 +18,8 @@ export default function Navbar() {
   const location = useLocation();
   const navigate = useNavigate();
 
+  const isHome = location.pathname === '/';
+
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
     window.addEventListener('scroll', onScroll, { passive: true });
@@ -43,7 +45,7 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className={`navbar ${scrolled ? 'navbar--scrolled' : ''}`}>
+      <nav className={`navbar ${!isHome || scrolled ? 'navbar--scrolled' : ''}`}>
         <div className="navbar__inner container">
           {/* Logo */}
           <Link to="/" className="navbar__logo">

@@ -110,10 +110,8 @@
 
 .register__info-check {
   color: var(--tan);
-  font-weight: 700;
-  font-size: 13px;
-  margin-top: 1px;
   flex-shrink: 0;
+  margin-top: 1px;
 }
 
 .register__info-divider {
@@ -132,16 +130,32 @@
 }
 
 .register__info-event-val {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   font-size: 13px;
   color: var(--text-secondary);
-  margin-bottom: 6px;
+  margin-bottom: 8px;
   line-height: 1.5;
 }
 
+.register__info-event-val svg {
+  color: var(--tan);
+  flex-shrink: 0;
+}
+
 .register__info-free {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   font-size: 14px;
   color: var(--navy);
   font-weight: 500;
+}
+
+.register__info-free svg {
+  color: var(--tan);
+  flex-shrink: 0;
 }
 
 /* Form */
@@ -153,12 +167,20 @@
 }
 
 .register__demo-banner {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
   background: #fff8e6;
   border-bottom: 1px solid #f0d890;
   padding: 14px 32px;
   font-size: 13px;
   color: #7a5c00;
   line-height: 1.5;
+}
+
+.register__demo-banner svg {
+  flex-shrink: 0;
+  margin-top: 1px;
 }
 
 .register__demo-banner code {
@@ -446,10 +468,21 @@
   padding: 16px 20px;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 8px;
   margin-bottom: 32px;
   font-size: 13px;
   color: var(--text-secondary);
+}
+
+.register-success__detail span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.register-success__detail svg {
+  color: var(--tan);
+  flex-shrink: 0;
 }
 
 .register-success__back {

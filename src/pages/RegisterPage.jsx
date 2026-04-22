@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, CheckCircle, User, Mail, Phone, Building, GraduationCap, MessageSquare } from 'lucide-react';
+import { ArrowLeft, ArrowRight, CheckCircle, Check, User, Mail, Phone, Building, GraduationCap, MessageSquare, MapPin, Calendar, Clock, Ticket, AlertTriangle } from 'lucide-react';
 import { submitRegistration, SHEET_URL } from '../utils/googleSheets';
 import Footer from '../components/Footer';
 import './RegisterPage.css';
@@ -91,11 +91,11 @@ export default function RegisterPage() {
             <strong>{form.email}</strong>. See you on the 30th of May.
           </p>
           <div className="register-success__detail">
-            <span>📍 Peter Mbah Law Auditorium, GO University</span>
-            <span>📅 Friday, 30th May 2026 · 8:00 AM</span>
+            <span><MapPin size={14} /> Peter Mbah Law Auditorium, GO University</span>
+            <span><Calendar size={14} /> Friday, 30th May 2026 · 8:00 AM</span>
           </div>
           <Link to="/" className="register-success__back">
-            ← Back to Home
+            <ArrowLeft size={15} /> Back to Home
           </Link>
         </div>
       </div>
@@ -143,7 +143,7 @@ export default function RegisterPage() {
                       'Certificate of participation',
                     ].map((item) => (
                       <li key={item} className="register__info-item">
-                        <span className="register__info-check">✓</span>
+                        <Check size={14} className="register__info-check" />
                         {item}
                       </li>
                     ))}
@@ -153,15 +153,15 @@ export default function RegisterPage() {
 
                   <div className="register__info-event">
                     <p className="register__info-event-label">Event Details</p>
-                    <p className="register__info-event-val">📅 Friday, 30th May 2026</p>
-                    <p className="register__info-event-val">⏰ Registration from 8:00 AM</p>
-                    <p className="register__info-event-val">📍 Peter Mbah Law Auditorium</p>
-                    <p className="register__info-event-val">🎓 Godfrey Okoye University, Enugu</p>
+                    <p className="register__info-event-val"><Calendar size={14} /> Friday, 30th May 2026</p>
+                    <p className="register__info-event-val"><Clock size={14} /> Registration from 8:00 AM</p>
+                    <p className="register__info-event-val"><MapPin size={14} /> Peter Mbah Law Auditorium</p>
+                    <p className="register__info-event-val"><GraduationCap size={14} /> Godfrey Okoye University, Enugu</p>
                   </div>
 
                   <div className="register__info-divider" />
                   <p className="register__info-free">
-                    🎟️ <strong>Completely Free</strong> — no fees, no catches.
+                    <Ticket size={14} /> <strong>Completely Free</strong>
                   </p>
                 </div>
               </aside>
@@ -170,7 +170,7 @@ export default function RegisterPage() {
               <div className="register__form-wrap">
                 {!isConfigured && (
                   <div className="register__demo-banner">
-                    ⚠️ <strong>Developer Note:</strong> Google Sheets not yet connected. Submissions will show success in demo mode.
+                    <AlertTriangle size={15} /> <strong>Developer Note:</strong> Google Sheets not yet connected. Submissions will show success in demo mode.
                     See <code>src/utils/googleSheets.js</code> for setup instructions.
                   </div>
                 )}
@@ -321,7 +321,7 @@ export default function RegisterPage() {
                     ) : (
                       <>
                         <span>Register for Build & Scale 2026</span>
-                        <span className="register__submit-arrow">→</span>
+                        <ArrowRight size={16} />
                       </>
                     )}
                   </button>
