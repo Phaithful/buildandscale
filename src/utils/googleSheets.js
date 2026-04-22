@@ -21,7 +21,7 @@
 // function doPost(e) {
 //   const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
 //   const data  = JSON.parse(e.postData.contents);
-//
+
 //   // ── 1. Save to sheet ─────────────────────────────────────────
 //   sheet.appendRow([
 //     new Date().toLocaleString('en-NG', { timeZone: 'Africa/Lagos' }),
@@ -33,20 +33,18 @@
 //     data.referral,
 //     data.regId,
 //   ]);
-//
+
 //   // ── 2. Build QR code URL ──────────────────────────────────────
 //   const qrData = encodeURIComponent(
-//     'BUILD & SCALE 2026 | ID: ' + data.regId +
-//     ' | ' + data.fullName +
-//     ' | ' + data.institution
+//     'https://buildandscale2026.vercel.app/verify?id=' + data.regId
 //   );
 //   const qrUrl =
 //     'https://api.qrserver.com/v1/create-qr-code/?data=' + qrData +
 //     '&size=280x280&bgcolor=FAF9F6&color=000080&margin=10';
-//
+
 //   // ── 3. Build HTML email ───────────────────────────────────────
 //   const firstName = data.fullName.split(' ')[0];
-//
+
 //   const htmlBody = `<!DOCTYPE html>
 // <html lang="en">
 // <head>
@@ -61,7 +59,7 @@
 //         <table width="600" cellpadding="0" cellspacing="0" border="0"
 //                style="max-width:600px;width:100%;background:#ffffff;border-radius:16px;
 //                       overflow:hidden;box-shadow:0 8px 40px rgba(0,0,128,0.10);">
-//
+
 //           <!-- HEADER -->
 //           <tr>
 //             <td style="background:#000080;padding:40px 48px 36px;">
@@ -94,7 +92,7 @@
 //                            background:linear-gradient(90deg,#E6BE8A 0%,rgba(230,190,138,0.1) 100%);"></div>
 //             </td>
 //           </tr>
-//
+
 //           <!-- BODY -->
 //           <tr>
 //             <td style="padding:40px 48px 0;">
@@ -103,7 +101,7 @@
 //                 is officially confirmed. Present the QR code below at the entrance on the
 //                 day of the event for seamless check-in.
 //               </p>
-//
+
 //               <!-- QR Block -->
 //               <table width="100%" cellpadding="0" cellspacing="0" border="0">
 //                 <tr>
@@ -126,7 +124,7 @@
 //                   </td>
 //                 </tr>
 //               </table>
-//
+
 //               <!-- Attendee Details -->
 //               <table width="100%" cellpadding="0" cellspacing="0" border="0"
 //                      style="margin-top:28px;border:1px solid rgba(0,0,128,0.08);
@@ -164,7 +162,7 @@
 //                   </td>
 //                 </tr>
 //               </table>
-//
+
 //               <!-- Event Details -->
 //               <table width="100%" cellpadding="0" cellspacing="0" border="0"
 //                      style="margin-top:20px;background:#FAF9F6;
@@ -185,7 +183,7 @@
 //               </table>
 //             </td>
 //           </tr>
-//
+
 //           <!-- FOOTER -->
 //           <tr>
 //             <td style="padding:36px 48px 40px;">
@@ -200,14 +198,14 @@
 //               </p>
 //             </td>
 //           </tr>
-//
+
 //         </table>
 //       </td>
 //     </tr>
 //   </table>
 // </body>
 // </html>`;
-//
+
 //   // ── 4. Send email (non-fatal if quota exceeded) ───────────────
 //   try {
 //     MailApp.sendEmail({
@@ -219,12 +217,12 @@
 //   } catch (mailErr) {
 //     Logger.log('MailApp error: ' + mailErr.toString());
 //   }
-//
+
 //   return ContentService
 //     .createTextOutput(JSON.stringify({ result: 'success', regId: data.regId }))
 //     .setMimeType(ContentService.MimeType.JSON);
 // }
-//
+
 // function doGet() {
 //   const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
 //   const rows  = sheet.getDataRange().getValues();
@@ -234,7 +232,7 @@
 // }
 // ================================================================
 
-export const SHEET_URL = 'https://script.google.com/macros/s/AKfycbwhHHPFiUjY54sE7JJhCrK3diAjRyHebBAKYvTECYymw-toJnvjILGOexcvko1JDqPlvQ/exec';
+export const SHEET_URL = 'https://script.google.com/macros/s/AKfycbyqGHumrL7frT8XhK0IbyqrPsTeN81eHGE8QIg7kOMMTqFvJ4I6RLajBCw5zhhG_n1__Q/exec';
 
 /**
  * Generates a unique registration ID.

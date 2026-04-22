@@ -80,7 +80,7 @@ export default function RegisterPage() {
   };
 
   if (status === 'success') {
-    const qrValue = `BUILD & SCALE 2026 | ID: ${regId} | ${form.fullName} | ${form.institution}`;
+    const qrValue = `https://buildandscale2026.vercel.app/verify?id=${regId}`;
     return (
       <div className="register-success">
         <div className="register-success__card">
