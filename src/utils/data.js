@@ -33,7 +33,7 @@ export const SPEAKERS = [
     organisation: 'Godfrey Okoye University',
     session: 'Workshop Session I',
     bio: "Olaedo Unah is a Law student, an Associate Arbitrator with the Nigerian Institute of Chartered Arbitrators, and a visual storyteller, working at the intersection of law, media, and education. She is the creative force behind GGG Media, a visual production brand, and the founder of TheBlackNWhite, a platform that uses video content to simplify legal concepts. Notably, she produced the first documentary style tour video of Godfrey Okoye University's main campus. Olaedo continues to build a distinctive path, using filmmaking as a tool for education, storytelling, and impact, She represents a new generation of young professionals, driven, versatile, and committed to excellence across multiple fields. From Ebonyi State, Nigeria, she is passionate about youth development and envisions a society where young people are confident, disciplined, and driven to pursue their dreams regardless of their circumstances.",
-    image: '/images/olaedo.JPEG',
+    image: '/images/olaedo.jpeg',
     initials: 'OU',
   },
   {
@@ -43,7 +43,7 @@ export const SPEAKERS = [
     organisation: 'Godfrey Okoye University',
     session: 'Workshop Session II',
     bio: "Obi Ugochukwu confidence a native of isialangwa North LGA of Abia State. Born in a family of 4 as the first Son was ordained a leader, with wisdom bestowed from above he has lead multitudes where ever he has found himself there fore he has built himself a solid leadership portfolio he was nicknamed (Obi for president) amongst his peers being an athlete he is the one time runner up of the GOUNI marathon and the captain of his level football team led them to several victories. The man is a computer scientist but has an undying love for philosophy and psychology and believes in human communication and is also building an active career in public speaking truly He knows no bounds. He has impacted so many with his bold voice and clearly he is not slowing down any soon. See you all at the top.",
-    image: "/images/obi.JPEG",
+    image: "/images/obi.jpeg",
     initials: 'OU',
   },
   {
@@ -53,7 +53,7 @@ export const SPEAKERS = [
     organisation: 'Azua Photography & Build & Scale',
     session: 'Panel Discussion',
     bio: 'Azua Suurshater Stephen is a professional photographer based in Abuja and a 400-level Computer Science student at Godfrey Okoye University. Frame by frame, client by client, he has built a creative practice on discipline and an eye for detail that few can teach. But creativity alone did not birth what you see today. Somewhere between technology, a burning conviction, and a scripture, "Do you see a man diligent in his work? He will stand before kings" — Build and Scale 2026 was born. He did not wait for the perfect moment. He built it anyway. He is the Lead Convener. He is a builder. And he is proof that you do not have to wait.',
-    image: "/images/azua.JPEG",
+    image: "/images/azua.jpeg",
     initials: 'AS',
   },
   {
