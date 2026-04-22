@@ -251,7 +251,7 @@ export default function AdminPage() {
             <table className="admin__table">
               <thead>
                 <tr>
-                  {['#', 'Full Name', 'Email', 'Phone', 'Institution', 'Level', 'Referral', 'Timestamp'].map((h) => (
+                  {['#', 'Full Name', 'Email', 'Phone', 'Institution', 'Level', 'Referral', 'Registration ID', 'Timestamp'].map((h) => (
                     <th
                       key={h}
                       className={`admin__th ${h !== '#' ? 'admin__th--sortable' : ''}`}
@@ -283,6 +283,7 @@ export default function AdminPage() {
                       </span>
                     </td>
                     <td className="admin__td admin__td--muted">{row.Referral || '—'}</td>
+                    <td className="admin__td admin__td--muted" style={{ fontFamily: 'monospace', fontSize: '12px', letterSpacing: '0.06em' }}>{row['Registration ID'] || '—'}</td>
                     <td className="admin__td admin__td--muted">{row.Timestamp || '—'}</td>
                   </tr>
                 ))}

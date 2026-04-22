@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, ArrowRight, CheckCircle, Check, User, Mail, Phone, Building, GraduationCap, MessageSquare, MapPin, Calendar, Clock, Ticket, AlertTriangle } from 'lucide-react';
-import { submitRegistration, SHEET_URL } from '../utils/googleSheets';
+import QRCode from 'react-qr-code';
+import { submitRegistration, SHEET_URL, generateRegId } from '../utils/googleSheets';
 import Footer from '../components/Footer';
 import './RegisterPage.css';
 
@@ -33,6 +34,7 @@ export default function RegisterPage() {
   const [form, setForm] = useState(INITIAL);
   const [errors, setErrors] = useState({});
   const [status, setStatus] = useState('idle'); // idle | submitting | success | error
+  const [regId] = useState(() => generateRegId());
   const isConfigured = SHEET_URL !== 'YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE';
 
   useEffect(() => {
@@ -70,7 +72,7 @@ export default function RegisterPage() {
 
     setStatus('submitting');
     try {
-      await submitRegistration({ ...form, timestamp: new Date().toISOString() });
+      await submitRegistration({ ...form, timestamp: new Date().toISOString(), regId });
       setStatus('success');
     } catch {
       setStatus('error');
@@ -78,6 +80,7 @@ export default function RegisterPage() {
   };
 
   if (status === 'success') {
+    const qrValue = `BUILD & SCALE 2026 | ID: ${regId} | ${form.fullName} | ${form.institution}`;
     return (
       <div className="register-success">
         <div className="register-success__card">
@@ -87,9 +90,27 @@ export default function RegisterPage() {
           <h2 className="register-success__title">You're In.</h2>
           <p className="register-success__name">Welcome, {form.fullName.split(' ')[0]}.</p>
           <p className="register-success__body">
-            Your seat at Build & Scale 2026 has been secured. We'll send confirmation details to{' '}
-            <strong>{form.email}</strong>. See you on the 30th of May.
+            Your seat at Build &amp; Scale 2026 is confirmed. A confirmation email with
+            this QR code has been sent to <strong>{form.email}</strong>.
           </p>
+
+          <div className="register-success__qr-block">
+            <p className="register-success__qr-label">Your Entry QR Code</p>
+            <div className="register-success__qr-wrap">
+              <QRCode
+                value={qrValue}
+                size={200}
+                fgColor="#000080"
+                bgColor="#FAF9F6"
+                style={{ display: 'block' }}
+              />
+            </div>
+            <p className="register-success__qr-id">{regId}</p>
+            <p className="register-success__qr-hint">
+              Screenshot this or check your email — present at the door for entry
+            </p>
+          </div>
+
           <div className="register-success__detail">
             <span><MapPin size={14} /> Peter Mbah Law Auditorium, GO University</span>
             <span><Calendar size={14} /> Friday, 30th May 2026 · 8:00 AM</span>

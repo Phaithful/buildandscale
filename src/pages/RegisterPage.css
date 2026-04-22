@@ -409,7 +409,7 @@
   border: 1px solid var(--border);
   border-radius: var(--radius-xl);
   padding: 56px 48px;
-  max-width: 520px;
+  max-width: 560px;
   width: 100%;
   text-align: center;
   box-shadow: var(--shadow-lg);
@@ -512,5 +512,51 @@
   .register__form { padding: 28px 20px 36px; }
   .register__row { grid-template-columns: 1fr; }
   .register__radio-grid { grid-template-columns: 1fr; }
-  .register-success__card { padding: 40px 24px; }
+  .register-success__card { padding: 40px 24px; max-width: 100%; }
+}
+
+/* ── QR block on success screen ── */
+.register-success__qr-block {
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 28px 24px 24px;
+  margin-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.register-success__qr-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--tan);
+  margin-bottom: 20px;
+}
+
+.register-success__qr-wrap {
+  background: var(--cream);
+  border: 3px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  line-height: 0;
+}
+
+.register-success__qr-id {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--navy);
+  margin-top: 16px;
+}
+
+.register-success__qr-hint {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 6px;
+  text-align: center;
+  line-height: 1.55;
 }
