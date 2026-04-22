@@ -1,0 +1,120 @@
+.orbital-overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--cream);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  z-index: 9999;
+}
+
+.orbital-scene {
+  position: relative;
+  width: 180px;
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Orbit tracks */
+.orbit {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 128, 0.12);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.orbit-1 {
+  width: 80px;
+  height: 80px;
+}
+
+.orbit-2 {
+  width: 130px;
+  height: 130px;
+}
+
+.orbit-3 {
+  width: 180px;
+  height: 180px;
+}
+
+/* Orbital dots */
+.orb {
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.orb-gold {
+  background: var(--gold);
+  width: 12px;
+  height: 12px;
+  box-shadow: 0 0 12px var(--gold);
+}
+
+.orb-navy {
+  background: var(--navy);
+  width: 10px;
+  height: 10px;
+  box-shadow: 0 0 12px rgba(0, 0, 128, 0.5);
+}
+
+.orb-tan {
+  background: var(--tan);
+  width: 8px;
+  height: 8px;
+  box-shadow: 0 0 10px rgba(133, 117, 77, 0.5);
+}
+
+/* Nucleus */
+.nucleus {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--navy);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  box-shadow: 0 0 20px rgba(0, 0, 128, 0.25);
+}
+
+.nucleus-inner {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--gold);
+}
+
+/* Brand text */
+.orbital-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.orbital-brand-title {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--navy);
+  letter-spacing: 0.04em;
+}
+
+.orbital-brand-year {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  color: var(--tan);
+  text-transform: uppercase;
+}

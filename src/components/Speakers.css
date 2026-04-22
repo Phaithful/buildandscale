@@ -1,0 +1,205 @@
+.speakers {
+  padding: 120px 0;
+  background: var(--FAF9F6, #FAF9F6);
+  position: relative;
+}
+
+.speakers::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border-gold), transparent);
+}
+
+.speakers__header {
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.speakers__header .section-label {
+  justify-content: center;
+}
+
+.speakers__header .section-label::before {
+  display: none;
+}
+
+.speakers__header .section-label::after {
+  content: '';
+  display: block;
+  width: 32px;
+  height: 1px;
+  background: var(--tan);
+}
+
+.speakers__title {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: 300;
+  color: var(--navy);
+  margin-bottom: 16px;
+}
+
+.speakers__title em {
+  font-style: italic;
+  font-weight: 600;
+  color: var(--tan);
+}
+
+.speakers__sub {
+  font-size: 16px;
+  color: var(--text-muted);
+  max-width: 500px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* Grid */
+.speakers__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+/* Card */
+.speaker-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.speaker-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 32px 64px rgba(0, 0, 128, 0.12);
+  border-color: var(--border-gold);
+}
+
+/* Image */
+.speaker-card__img-wrap {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--gold-light), var(--cream));
+}
+
+.speaker-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.speaker-card:hover .speaker-card__img {
+  transform: scale(1.05);
+}
+
+/* Avatar placeholder */
+.speaker-card__avatar {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+}
+
+.speaker-card__avatar span {
+  font-family: var(--font-display);
+  font-size: 48px;
+  font-weight: 300;
+  color: rgba(230, 190, 138, 0.6);
+  letter-spacing: 0.05em;
+}
+
+/* Progressive blur overlay — ProgressiveBlur component */
+.speaker-card__progressive-blur {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* Session badge */
+.speaker-card__session-badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(12px);
+  border-radius: 100px;
+  padding: 5px 12px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--navy);
+  border: 1px solid rgba(230, 190, 138, 0.4);
+}
+
+/* Info */
+.speaker-card__info {
+  padding: 24px 24px 28px;
+}
+
+.speaker-card__name {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 4px;
+}
+
+.speaker-card__role {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--tan);
+  margin-bottom: 2px;
+}
+
+.speaker-card__org {
+  font-size: 12px;
+  color: var(--text-muted);
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 0;
+}
+
+/* Bio slide-up */
+.speaker-card__bio-wrap {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 0.4s ease,
+              margin-top 0.4s ease;
+  opacity: 0;
+  margin-top: 0;
+}
+
+.speaker-card__bio-wrap--open {
+  max-height: 200px;
+  opacity: 1;
+  margin-top: 14px;
+}
+
+.speaker-card__bio {
+  font-size: 13.5px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .speakers__grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 560px) {
+  .speakers__grid { grid-template-columns: 1fr; }
+  .speakers { padding: 80px 0; }
+}
