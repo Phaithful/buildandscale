@@ -88,25 +88,52 @@ export default function Navbar() {
 
       {/* Mobile drawer */}
       <div className={`mobile-drawer ${menuOpen ? 'mobile-drawer--open' : ''}`}>
+        {/* Decorative background text */}
+        <span className="mobile-drawer__bg-text" aria-hidden="true">B&amp;S</span>
+
+        {/* Header row */}
+        <div className="mobile-drawer__header">
+          <div className="mobile-drawer__brand">
+            <div className="mobile-drawer__brand-mark">B&amp;S</div>
+            <span className="mobile-drawer__brand-name">Build &amp; Scale</span>
+          </div>
+          <button
+            className="mobile-drawer__close"
+            onClick={() => setMenuOpen(false)}
+            aria-label="Close menu"
+          >
+            <X size={18} />
+          </button>
+        </div>
+
+        {/* Nav links */}
         <ul className="mobile-drawer__links">
           {NAV_LINKS.map((link, i) => (
-            <li key={link.label} style={{ animationDelay: `${i * 0.06}s` }}>
+            <li key={link.label} style={{ animationDelay: `${i * 0.07}s` }}>
               <a
                 href={link.href}
                 onClick={(e) => handleNavClick(e, link.href)}
                 className="mobile-drawer__link"
               >
-                {link.label}
+                <span className="mobile-drawer__link-label">{link.label}</span>
               </a>
             </li>
           ))}
-          <li style={{ animationDelay: '0.38s' }}>
-            <Link to="/register" className="mobile-drawer__cta" onClick={() => setMenuOpen(false)}>
-              Register Now
-            </Link>
-          </li>
         </ul>
+
+        {/* Footer CTA + info */}
+        <div className="mobile-drawer__footer">
+          <Link
+            to="/register"
+            className="mobile-drawer__cta"
+            onClick={() => setMenuOpen(false)}
+          >
+            Register Now
+          </Link>
+          <p className="mobile-drawer__date">30th May 2026 · Enugu</p>
+        </div>
       </div>
+
       {menuOpen && (
         <div className="mobile-drawer__backdrop" onClick={() => setMenuOpen(false)} />
       )}

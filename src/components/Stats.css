@@ -46,8 +46,39 @@
   background: linear-gradient(to bottom, transparent, var(--border-gold), transparent);
 }
 
-@media (max-width: 600px) {
-  .stats__item { padding: 16px 28px; }
-  .stats__sep { width: 40px; height: 1px; }
-  .stats__inner { flex-direction: row; flex-wrap: wrap; }
+@media (max-width: 700px) {
+  .stats {
+    padding: 0;
+  }
+
+  .stats__inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+  }
+
+  /* Hide all separator divs on mobile */
+  .stats__sep {
+    display: none;
+  }
+
+  .stats__item {
+    padding: 28px 16px;
+    border-bottom: 1px solid var(--border-gold);
+  }
+
+  /* Left column items get a right border */
+  .stats__item:nth-child(4n+1) {
+    border-right: 1px solid var(--border-gold);
+  }
+
+  /* Last row — no bottom border (separators sit at even positions, so last two stats are at nth-last-child 1 and 3) */
+  .stats__item:nth-last-child(1),
+  .stats__item:nth-last-child(3) {
+    border-bottom: none;
+  }
+
+  .stats__num {
+    font-size: clamp(36px, 9vw, 48px);
+  }
 }

@@ -5,9 +5,14 @@ import { ArrowRight, MapPin, Calendar, Target } from 'lucide-react';
 import { CONFERENCE_DATE } from '../utils/data';
 import './Hero.css';
 
-const SESSIONS = [
-  'Entrepreneurship', 'Leadership', 'Execution', 'Innovation',
-  'Networking', 'Vision', 'Discipline', 'Growth',
+const SPONSORS = [
+  { name: 'Capitis', src: '/images/sponsors/capitis-logo.0fdb9306.svg' },
+  { name: 'Enugu SME', src: '/images/sponsors/enugu-sme-logo.88c278f3.svg' },
+  { name: 'ESG', src: '/images/sponsors/esg-logo.5e44c702.svg' },
+  { name: 'Genesys', src: '/images/sponsors/genesys-logo.df6b6556.svg' },
+  { name: 'ODE', src: '/images/sponsors/ode-logo.68d565cf.svg' },
+  { name: 'Peter Mbah', src: '/images/sponsors/peter-mbah-logo.f77990af.svg' },
+  { name: 'The Garage', src: '/images/sponsors/the-garage-logo.9cd53ada.svg' },
 ];
 
 const fadeUp = (delay = 0) => ({
@@ -159,14 +164,19 @@ export default function Hero() {
               </div>
             </div>
 
-            {/* Session marquee card */}
+            {/* Sponsors marquee card */}
             <div className="hero__marquee-card">
-              <p className="hero__marquee-label">Topics Covered</p>
+              <p className="hero__marquee-label">Our Sponsors</p>
               <div className="hero__marquee-track-wrap">
                 <div className="hero__marquee-track">
-                  {[...SESSIONS, ...SESSIONS].map((s, i) => (
-                    <span key={i} className="hero__marquee-item">
-                      {s} <span className="hero__marquee-dot">·</span>
+                  {[...SPONSORS, ...SPONSORS].map((s, i) => (
+                    <span key={i} className="hero__marquee-item hero__marquee-item--logo">
+                      <img
+                        src={s.src}
+                        alt={s.name}
+                        className="hero__sponsor-logo"
+                        loading="lazy"
+                      />
                     </span>
                   ))}
                 </div>
