@@ -1,18 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { SPEAKERS } from '../utils/data';
-import { ProgressiveBlur } from './ProgressiveBlur';
 import './Speakers.css';
 
-function SpeakerCard({ speaker, index }) {
-  const [hovered, setHovered] = useState(false);
-
+const SpeakerCard = React.memo(function SpeakerCard({ speaker, index }) {
   return (
-    <div
-      className={`speaker-card reveal delay-${index + 1}`}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-    >
-      {/* Image / Avatar area */}
+    <div className={`speaker-card reveal delay-${index + 1}`}>
       <div className="speaker-card__img-wrap">
         {speaker.image ? (
           <img
@@ -27,36 +19,26 @@ function SpeakerCard({ speaker, index }) {
           </div>
         )}
 
-        {/* Progressive blur overlay on hover */}
-        {hovered && (
-          <ProgressiveBlur
-            direction="bottom"
-            blurLayers={6}
-            blurIntensity={0.3}
-            className="speaker-card__progressive-blur"
-          />
-        )}
+        {/* Blur overlay — always in DOM, CSS controls opacity on hover */}
+        <div className="speaker-card__blur-overlay" />
 
-        {/* Session badge */}
         <div className="speaker-card__session-badge">
           {speaker.session}
         </div>
       </div>
 
-      {/* Info */}
       <div className="speaker-card__info">
         <h3 className="speaker-card__name">{speaker.name}</h3>
         <p className="speaker-card__role">{speaker.title}</p>
         <p className="speaker-card__org">{speaker.organisation}</p>
 
-        {/* Bio — slides up on hover */}
-        <div className={`speaker-card__bio-wrap ${hovered ? 'speaker-card__bio-wrap--open' : ''}`}>
+        <div className="speaker-card__bio-wrap">
           <p className="speaker-card__bio">{speaker.bio}</p>
         </div>
       </div>
     </div>
   );
-}
+});
 
 export default function Speakers() {
   return (

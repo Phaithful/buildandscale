@@ -29,8 +29,18 @@ export default function Hero() {
   const [slotsLeft, setSlotsLeft] = useState(null);
 
   useEffect(() => {
+    const CACHE_KEY = 'bns_slots';
+    const TTL = 5 * 60 * 1000;
+    try {
+      const cached = JSON.parse(localStorage.getItem(CACHE_KEY) || 'null');
+      if (cached && Date.now() - cached.ts < TTL) { setSlotsLeft(cached.v); return; }
+    } catch {}
     fetchRegistrations()
-      .then((rows) => setSlotsLeft(Math.max(0, TOTAL_SEATS - rows.length)))
+      .then((rows) => {
+        const v = Math.max(0, TOTAL_SEATS - rows.length);
+        setSlotsLeft(v);
+        try { localStorage.setItem(CACHE_KEY, JSON.stringify({ v, ts: Date.now() })); } catch {}
+      })
       .catch(() => setSlotsLeft(TOTAL_SEATS));
   }, []);
   return (

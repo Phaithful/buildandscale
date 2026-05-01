@@ -7,7 +7,7 @@ export default function OrbitalLoader() {
     <motion.div
       className="orbital-overlay"
       animate={{ opacity: [1, 1, 0] }}
-      transition={{ duration: 0.5, delay: 1.0, times: [0, 0.6, 1] }}
+      transition={{ duration: 0.25, delay: 0.3, times: [0, 0.5, 1] }}
     >
       <div className="orbital-scene">
         {/* Orbital rings — Framer Motion driven */}

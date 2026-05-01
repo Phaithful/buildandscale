@@ -19,8 +19,40 @@
 // ================================================================
 //
 // function doPost(e) {
+//   const data = JSON.parse(e.postData.contents);
+//
+//   // ── Contact form message ──────────────────────────────────────
+//   if (data.type === 'contact') {
+//     try {
+//       MailApp.sendEmail({
+//         to:       'buildandscaleint1@gmail.com',
+//         subject:  'Contact Form Message — Build & Scale 2026',
+//         htmlBody: '<p><strong>From:</strong> ' + data.name + '</p>' +
+//                   '<p><strong>Email:</strong> ' + data.email + '</p>' +
+//                   '<p><strong>Message:</strong></p>' +
+//                   '<p>' + data.message.replace(/\n/g, '<br>') + '</p>',
+//         name:     'Build & Scale 2026 Website',
+//         replyTo:  data.email,
+//       });
+//     } catch (err) {
+//       Logger.log('Contact email error: ' + err.toString());
+//     }
+//     return ContentService
+//       .createTextOutput(JSON.stringify({ result: 'success' }))
+//       .setMimeType(ContentService.MimeType.JSON);
+//   }
+//
+//   // ── Registration ──────────────────────────────────────────────
 //   const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
-//   const data  = JSON.parse(e.postData.contents);
+
+//   // ── 0. Reject duplicate emails ────────────────────────────────
+//   const rows = sheet.getDataRange().getValues();
+//   const existingEmails = rows.slice(1).map(r => (r[2] || '').toString().toLowerCase());
+//   if (existingEmails.includes(data.email.toLowerCase())) {
+//     return ContentService
+//       .createTextOutput(JSON.stringify({ result: 'duplicate' }))
+//       .setMimeType(ContentService.MimeType.JSON);
+//   }
 
 //   // ── 1. Save to sheet ─────────────────────────────────────────
 //   sheet.appendRow([
@@ -243,7 +275,7 @@
 // }
 // ================================================================
 
-export const SHEET_URL = 'https://script.google.com/macros/s/AKfycbyGtQ0EbkaXcEsOkvfRl6-F2MIIVNHWlufVQzxOZ_K6P-1Xjs0C5H5LpFokOnXrew74Nw/exec'
+export const SHEET_URL = 'https://script.google.com/macros/s/AKfycbwmpN0J-FxQ0tfXp3RrOEoBQLb-GJCYe7ERCw5AWfhq4Xtkg7dxdNIoqO-Kjh5iIh7NvA/exec'
 /**
  * Generates a unique registration ID.
  * Format: BS2026-XXXX-YYYY  (e.g. BS2026-LXK4-F9J2)
@@ -260,6 +292,16 @@ export async function submitRegistration(formData) {
     mode: 'no-cors',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(formData), // formData now includes regId
+  });
+  return { success: true };
+}
+
+export async function submitContactMessage(formData) {
+  await fetch(SHEET_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ type: 'contact', ...formData }),
   });
   return { success: true };
 }

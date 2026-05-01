@@ -1,5 +1,3 @@
-import { motion } from 'framer-motion';
-
 const GRADIENT_ANGLES = {
   top: 0,
   right: 90,
@@ -12,7 +10,6 @@ export function ProgressiveBlur({
   blurLayers = 8,
   className,
   blurIntensity = 0.25,
-  ...props
 }) {
   const layers = Math.max(blurLayers, 2);
   const segmentSize = 1 / (blurLayers + 1);
@@ -34,7 +31,7 @@ export function ProgressiveBlur({
         const gradient = `linear-gradient(${angle}deg, ${gradientStops.join(', ')})`;
 
         return (
-          <motion.div
+          <div
             key={index}
             style={{
               pointerEvents: 'none',
@@ -45,7 +42,6 @@ export function ProgressiveBlur({
               WebkitMaskImage: gradient,
               backdropFilter: `blur(${index * blurIntensity}px)`,
             }}
-            {...props}
           />
         );
       })}

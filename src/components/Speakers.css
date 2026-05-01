@@ -119,11 +119,21 @@
   letter-spacing: 0.05em;
 }
 
-/* Progressive blur overlay — ProgressiveBlur component */
-.speaker-card__progressive-blur {
+/* Blur overlay — single div, CSS-only, no JS mount/unmount */
+.speaker-card__blur-overlay {
   position: absolute;
   inset: 0;
   pointer-events: none;
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  mask-image: linear-gradient(to top, black 0%, transparent 65%);
+  -webkit-mask-image: linear-gradient(to top, black 0%, transparent 65%);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.speaker-card:hover .speaker-card__blur-overlay {
+  opacity: 1;
 }
 
 /* Session badge */
@@ -171,7 +181,7 @@
   margin-bottom: 0;
 }
 
-/* Bio slide-up */
+/* Bio slide-up — CSS-only hover, no JS state */
 .speaker-card__bio-wrap {
   max-height: 0;
   overflow: hidden;
@@ -182,8 +192,8 @@
   margin-top: 0;
 }
 
-.speaker-card__bio-wrap--open {
-  max-height: 200px;
+.speaker-card:hover .speaker-card__bio-wrap {
+  max-height: 600px;
   opacity: 1;
   margin-top: 14px;
 }

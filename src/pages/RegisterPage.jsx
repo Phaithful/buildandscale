@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, ArrowRight, CheckCircle, Check, User, Mail, Phone, Building, GraduationCap, MessageSquare, MapPin, Calendar, Clock, Ticket, AlertTriangle } from 'lucide-react';
 import QRCode from 'react-qr-code';
-import { submitRegistration, SHEET_URL, generateRegId } from '../utils/googleSheets';
+import { submitRegistration, fetchRegistrations, SHEET_URL, generateRegId } from '../utils/googleSheets';
 import Footer from '../components/Footer';
 import './RegisterPage.css';
 
@@ -72,6 +72,20 @@ export default function RegisterPage() {
 
     setStatus('submitting');
     try {
+      try {
+        const existing = await fetchRegistrations();
+        const duplicate = existing.some(
+          (r) => r.Email && r.Email.toLowerCase() === form.email.trim().toLowerCase()
+        );
+        if (duplicate) {
+          setErrors({ email: 'This email is already registered.' });
+          setStatus('idle');
+          return;
+        }
+      } catch {
+        // If the duplicate check fails, allow submission to proceed
+      }
+
       await submitRegistration({ ...form, timestamp: new Date().toISOString(), regId });
       setStatus('success');
     } catch {

@@ -19,7 +19,7 @@ function useCountUp(target, duration = 1800, start = false) {
   return value;
 }
 
-function StatItem({ stat, active }) {
+const StatItem = React.memo(function StatItem({ stat, active }) {
   const count = useCountUp(stat.value, 1600, active);
   return (
     <div className="stats__item">
@@ -29,7 +29,7 @@ function StatItem({ stat, active }) {
       <span className="stats__label">{stat.label}</span>
     </div>
   );
-}
+});
 
 export default function Stats() {
   const [active, setActive] = useState(false);

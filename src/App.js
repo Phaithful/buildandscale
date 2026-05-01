@@ -13,7 +13,7 @@ function App() {
 
   React.useEffect(() => {
     if (isVerify) { setLoading(false); return; }
-    const timer = setTimeout(() => setLoading(false), 1500);
+    const timer = setTimeout(() => setLoading(false), 600);
     return () => clearTimeout(timer);
   }, [isVerify]);
 

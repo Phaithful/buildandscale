@@ -14,7 +14,7 @@ function getTimeLeft() {
   };
 }
 
-function TimeBlock({ value, label }) {
+const TimeBlock = React.memo(function TimeBlock({ value, label }) {
   const [flip, setFlip] = useState(false);
   const [prev, setPrev] = useState(value);
 
@@ -39,7 +39,7 @@ function TimeBlock({ value, label }) {
       <span className="countdown__label">{label}</span>
     </div>
   );
-}
+});
 
 export default function Countdown() {
   const [time, setTime] = useState(getTimeLeft());

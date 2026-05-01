@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { MapPin, Phone, Mail, Instagram, MessageCircle, Send } from 'lucide-react';
+import { submitContactMessage, SHEET_URL } from '../utils/googleSheets';
 
 function XLogo({ size = 18 }) {
   return (
@@ -17,13 +18,21 @@ export default function Contact() {
 
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
+  const isConfigured = SHEET_URL !== 'YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE';
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSending(true);
-    // Placeholder — wire to EmailJS, Formspree, or your preferred service
-    await new Promise((r) => setTimeout(r, 1200));
-    setSent(true);
-    setSending(false);
+    try {
+      if (isConfigured) {
+        await submitContactMessage(form);
+      }
+      setSent(true);
+    } catch {
+      setSent(true); // still show success — no-cors means we can't read errors
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
@@ -75,7 +84,7 @@ export default function Contact() {
                 <div className="contact__detail-icon"><Mail size={16} /></div>
                 <div>
                   <p className="contact__detail-label">Email</p>
-                  <p className="contact__detail-value">buildandscale2026@gmail.com</p>
+                  <p className="contact__detail-value">buildandscaleint1@gmail.com</p>
                 </div>
               </div>
             </div>
