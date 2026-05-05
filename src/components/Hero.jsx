@@ -117,7 +117,7 @@ export default function Hero() {
             {/* CTAs */}
             <motion.div className="hero__ctas" {...fadeUp(0.5)}>
               <Link to="/register" className="hero__cta-primary">
-                <span>Secure Your Seat</span>
+                <span>Register Now</span>
                 <ArrowRight size={16} />
               </Link>
               <a

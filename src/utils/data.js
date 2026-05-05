@@ -49,7 +49,7 @@ export const SPEAKERS = [
   {
     id: 5,
     name: 'Grace Omaka',
-    title: 'Writter', 
+    title: 'Author', 
     organisation: "Theos' Grace",
     session: 'Panelist Moderator',
     bio: "Grace Omaka is an accounting undergraduate at Godfrey Okoye University with a growing interest in internal auditing and governance, and an established footprint in community leadership. As Lead Community Manager and Associate for Volunteers Experience at TEDxEnugu, she has shaped the experiences of over 5,000 community members across community building, volunteer coordination, and event planning. She is also the writer behind Theos' Grace, a Substack publication exploring life's realities through the lens of Scripture. A certified presenter trained by the West Africa Broadcast and Media Academy, and a broadcast journalism contributor with GOUNI Press Crib for over three years, Grace brings clarity, warmth, and structure to every space she occupies, committed to turning ideas into lasting impact.",
