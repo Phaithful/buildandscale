@@ -196,7 +196,7 @@ export default function Footer() {
               <img src="/Logo.svg" alt="Build & Scale 2026" className="footer__logo-img" />
             </div>
             <div className="footer__socials">
-              <a href="#" className="footer__social" aria-label="Instagram"><Instagram size={15} /></a>
+              <a href="https://www.instagram.com/buildandscale.ng/" target="_blank" rel="noopener noreferrer" className="footer__social" aria-label="Instagram"><Instagram size={15} /></a>
               <a href="#" className="footer__social" aria-label="X (formerly Twitter)"><XLogo size={15} /></a>
               <a href="#" className="footer__social" aria-label="WhatsApp"><MessageCircle size={15} /></a>
             </div>

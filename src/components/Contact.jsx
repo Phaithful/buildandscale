@@ -93,7 +93,7 @@ export default function Contact() {
             <div className="contact__socials">
               <p className="contact__socials-label">Follow the journey</p>
               <div className="contact__social-icons">
-                <a href="#" className="contact__social-btn" aria-label="Instagram">
+                <a href="https://www.instagram.com/buildandscale.ng/" target="_blank" rel="noopener noreferrer" className="contact__social-btn" aria-label="Instagram">
                   <Instagram size={18} />
                 </a>
                 <a href="#" className="contact__social-btn" aria-label="X (formerly Twitter)">

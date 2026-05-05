@@ -8,13 +8,13 @@ export const CONFERENCE_DATE = new Date('2026-05-30T09:00:00');
 export const SPEAKERS = [
   {
     id: 1,
-    name: 'Adaeze Okafor',
+    name: 'Mr. Val Okafor',
     title: 'CEO & Founder',
-    organisation: 'Nexus Ventures Nigeria',
-    session: 'Keynote Address I',
-    bio: 'Built one of Southeast Nigeria\'s fastest growing tech investment firms from a university dorm room. Adaeze brings 12 years of building experience to the stage.',
-    image: null, // Replace with actual image URL
-    initials: 'AO',
+    organisation: 'The Val Okafor Company',
+    session: 'Main Speaker',
+    bio: "Val Okafor is a certified Human Capital Development Expert and globally recognised Youth Development Professional with over a decade of experience empowering Africa's young population. As CEO of The Val Okafor Company, he pioneers leadership and entrepreneurship development programs that transform participants into high-impact leaders. His influence spans borders and sectors, as a Nigerian Youth SDGs Champion, African Change Makers Fellow, Commonwealth Open Source Leader, YALI West Africa Fellow, and Fela Durotoye Leadership Network Ambassador. He has represented Africa at prestigious global platforms including the World Bank Group Youth Summit and the St. Petersburg International Economic Forum. Recognised among the top 100 most inspiring Africans by Opportunities Hub, Val is also a mentor on the Tony Elumelu Foundation Entrepreneurship Programme, a force of innovation committed to redefining leadership across Africa and beyond.",
+    image: "/images/okafor.jpg", // Replace with actual image URL
+    initials: 'VO',
   },
   {
     id: 2,
@@ -81,7 +81,7 @@ export const SPEAKERS = [
     name: 'Nwankwo Chiamaka Vera',
     title: 'Law Student & Entrepreneurial Trailblazer',
     organisation: 'Founder of VEEJSTORE',
-    session: 'Panelist',
+    session: 'Keynote Speaker',
     bio: "Nwankwo Chiamaka Vera is a 400-level Law student at Enugu State University of Science and Technology and the founder of VEEJSTORE, a growing brand specializing in gift items and jewelry. Established three years ago, the brand recently marked a significant milestone with the launch of its first physical store. Driven by a passion for entrepreneurship, Vera has intentionally combined her legal education with hands-on business experience, with a long-term goal of becoming a business lawyer. Building her brand without prior mentorship, she has demonstrated resilience, initiative, and a commitment to growth, positioning herself as a role model for young people aspiring to create opportunities for themselves. Her vision is to excel in both law and business, inspiring others to turn ideas into impactful realities.",
     image: "/images/Vera.PNG",
     initials: 'NCV',
@@ -91,7 +91,7 @@ export const SPEAKERS = [
     name: 'Victoria Kyocher Ivveren',
     title: 'Fashion Entrepreneur & Creative Mentor',
     organisation: 'CEO Bloomzs Stitches',
-    session: 'Panelist',
+    session: 'Keynote Speaker',
     bio: "Victoria Kyocher Ivveren is a visionary fashion entrepreneur, creative leader, and mentor shaping a growing generation of designers and young professionals. She is the Chief Executive Officer of Bloomzs Stitches, an Abuja-based fashion brand known for its blend of elegance, innovation, and cultural expression. A graduate of Benue State University, Victoria has spent seven years honing her craft and transforming her creativity into a thriving brand that reflects excellence and authenticity. Beyond design, she is widely respected as a mentor, investing time and wisdom into aspiring designers and young individuals navigating their personal and professional journeys. Her words, often described as rich with insight, have become a source of direction and encouragement to many. Victoria is proof that true influence lies in the ability to uplift, inspire, and lead with intention.",
     image: "/images/Victoria.jpeg",
     initials: 'OO',
