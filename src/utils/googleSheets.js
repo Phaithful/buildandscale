@@ -42,6 +42,58 @@
 //       .setMimeType(ContentService.MimeType.JSON);
 //   }
 //
+//   // ── Reminder emails ───────────────────────────────────────────
+//   if (data.type === 'reminder') {
+//     const sheet    = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+//     const rows     = sheet.getDataRange().getValues();
+//     const emailCol = rows[0].indexOf('Email');
+//     const nameCol  = rows[0].indexOf('Full Name');
+//     let sent = 0;
+//     rows.slice(1).forEach(function(row) {
+//       const email     = (row[emailCol] || '').toString().trim();
+//       const firstName = ((row[nameCol] || 'Attendee').toString().split(' '))[0];
+//       if (!email) return;
+//       const reminderHtml =
+//         '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"/></head>' +
+//         '<body style="margin:0;padding:0;background:#FAF9F6;font-family:\'Helvetica Neue\',Helvetica,Arial,sans-serif;">' +
+//         '<table width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#FAF9F6;padding:40px 16px;">' +
+//         '<tr><td align="center">' +
+//         '<table width="600" cellpadding="0" cellspacing="0" border="0" style="max-width:600px;width:100%;background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,128,0.10);">' +
+//         '<tr><td style="background:#000080;padding:32px 48px 28px;">' +
+//         '<img src="https://buildandscale2026.vercel.app/logo.png" alt="Build &amp; Scale 2026" width="160" height="44" style="display:block;border:0;"/>' +
+//         '<div style="margin-top:16px;height:1px;background:linear-gradient(90deg,#E6BE8A 0%,rgba(230,190,138,0.1) 100%);"></div>' +
+//         '</td></tr>' +
+//         '<tr><td style="padding:36px 48px 0;">' +
+//         '<p style="margin:0 0 8px;font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#85754D;">Reminder</p>' +
+//         '<p style="margin:0 0 24px;font-family:Georgia,serif;font-size:26px;font-weight:400;color:#000080;line-height:1.25;">' + data.subject + '</p>' +
+//         '<p style="margin:0 0 4px;font-size:15px;color:#3a3a5c;">Hi ' + firstName + ',</p>' +
+//         '<div style="margin:16px 0 28px;font-size:15px;color:#3a3a5c;line-height:1.75;">' + data.message.replace(/\n/g,'<br>') + '</div>' +
+//         '<table width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#FAF9F6;border:1px solid rgba(230,190,138,0.35);border-radius:12px;">' +
+//         '<tr><td style="padding:20px 24px;">' +
+//         '<p style="margin:0 0 12px;font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#85754D;">Event Details</p>' +
+//         '<table width="100%" cellpadding="0" cellspacing="0" border="0">' +
+//         '<tr><td style="padding:4px 0;font-size:11px;font-weight:700;text-transform:uppercase;color:#85754D;width:70px;">Date</td><td style="padding:4px 0;font-size:13px;color:#3a3a5c;"><strong>Saturday, 30th May 2026</strong></td></tr>' +
+//         '<tr><td style="padding:4px 0;font-size:11px;font-weight:700;text-transform:uppercase;color:#85754D;">Time</td><td style="padding:4px 0;font-size:13px;color:#3a3a5c;">Registration from <strong>8:00 AM</strong></td></tr>' +
+//         '<tr><td style="padding:4px 0;font-size:11px;font-weight:700;text-transform:uppercase;color:#85754D;vertical-align:top;">Venue</td><td style="padding:4px 0;font-size:13px;color:#3a3a5c;">Peter Mbah Law Auditorium<br/>Godfrey Okoye University, Enugu</td></tr>' +
+//         '</table></td></tr></table>' +
+//         '</td></tr>' +
+//         '<tr><td style="padding:28px 48px 36px;">' +
+//         '<div style="height:1px;background:rgba(0,0,128,0.08);margin-bottom:24px;"></div>' +
+//         '<p style="margin:0 0 4px;font-family:Georgia,serif;font-size:14px;font-weight:600;color:#000080;">Build &amp; Scale 2026</p>' +
+//         '<p style="margin:0;font-size:11px;color:#708090;">Convened by Azua Suurshater Stephen &middot; Godfrey Okoye University, Enugu</p>' +
+//         '<p style="margin:12px 0 0;font-size:10px;color:#a0aab4;">This is an automated message. Do not reply to this email.</p>' +
+//         '</td></tr>' +
+//         '</table></td></tr></table></body></html>';
+//       try {
+//         MailApp.sendEmail({ to: email, subject: data.subject, htmlBody: reminderHtml, name: 'Build & Scale 2026' });
+//         sent++;
+//       } catch(e) { Logger.log('Reminder error ' + email + ': ' + e); }
+//     });
+//     return ContentService
+//       .createTextOutput(JSON.stringify({ result: 'success', sent: sent }))
+//       .setMimeType(ContentService.MimeType.JSON);
+//   }
+//
 //   // ── Registration ──────────────────────────────────────────────
 //   const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
 
@@ -274,7 +326,7 @@
 // }
 // ================================================================
 
-export const SHEET_URL = 'https://script.google.com/macros/s/AKfycbyRtmYLqlwYR4gQiASTiSXE8YDso3cAuRyuWo41RUvXYktpH44zIb6wYqU3JwYF4SFb/exec'
+export const SHEET_URL = 'https://script.google.com/macros/s/AKfycby-_C-RQ4-oN7UfBlHjZLM9OJ1NhKZJ8CwB0qqeeerKpozSiURaFQ8jPUnVWw0Mr_CYWw/exec'
 /**
  * Generates a unique registration ID.
  * Format: BS2026-XXXX-YYYY  (e.g. BS2026-LXK4-F9J2)
@@ -291,6 +343,16 @@ export async function submitRegistration(formData) {
     mode: 'no-cors',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(formData), // formData now includes regId
+  });
+  return { success: true };
+}
+
+export async function sendReminderEmails({ subject, message }) {
+  await fetch(SHEET_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ type: 'reminder', subject, message }),
   });
   return { success: true };
 }

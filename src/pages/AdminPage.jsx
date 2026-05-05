@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { LogOut, RefreshCw, Download, Users, TrendingUp, School, Search, ChevronUp, ChevronDown } from 'lucide-react';
-import { fetchRegistrations, SHEET_URL } from '../utils/googleSheets';
+import { LogOut, RefreshCw, Download, Users, TrendingUp, School, Search, ChevronUp, ChevronDown, Send, CheckCircle, X } from 'lucide-react';
+import { fetchRegistrations, sendReminderEmails, SHEET_URL } from '../utils/googleSheets';
 import './AdminPage.css';
 
 const ADMIN_PASSWORD = 'Admin2357';
@@ -29,6 +29,13 @@ export default function AdminPage() {
   const [sortField, setSortField] = useState('Timestamp');
   const [sortDir, setSortDir] = useState('desc');
   const [levelFilter, setLevelFilter] = useState('All');
+  const [reminderOpen, setReminderOpen] = useState(false);
+  const [reminderSubject, setReminderSubject] = useState('Build & Scale 2026 — See You Saturday!');
+  const [reminderMessage, setReminderMessage] = useState(
+    "We're looking forward to seeing you at Build & Scale 2026 this Saturday, 30th May 2026!\n\nDoors open at 8:00 AM at the Peter Mbah Law Auditorium, Godfrey Okoye University, Enugu.\n\nDon't forget to bring your registration QR code for entry. See you there!"
+  );
+  const [reminderSending, setReminderSending] = useState(false);
+  const [reminderDone, setReminderDone] = useState(null);
   const isConfigured = SHEET_URL !== 'YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE';
 
   const load = useCallback(async () => {
@@ -97,6 +104,21 @@ export default function AdminPage() {
     if (sortField === field) setSortDir(sortDir === 'asc' ? 'desc' : 'asc');
     else { setSortField(field); setSortDir('asc'); }
   };
+
+  const handleSendReminder = async () => {
+    if (!reminderSubject.trim() || !reminderMessage.trim()) return;
+    setReminderSending(true);
+    try {
+      await sendReminderEmails({ subject: reminderSubject, message: reminderMessage });
+      setReminderDone(data.length);
+    } catch {
+      setReminderDone(0);
+    } finally {
+      setReminderSending(false);
+    }
+  };
+
+  const closeReminder = () => { setReminderOpen(false); setReminderDone(null); };
 
   const exportCSV = () => {
     if (!data.length) return;
@@ -168,6 +190,10 @@ export default function AdminPage() {
           <button className="admin__btn admin__btn--outline" onClick={exportCSV} disabled={!data.length}>
             <Download size={15} />
             Export CSV
+          </button>
+          <button className="admin__btn admin__btn--primary" onClick={() => setReminderOpen(true)} disabled={!data.length}>
+            <Send size={15} />
+            Send Reminder
           </button>
           <button className="admin__btn admin__btn--ghost" onClick={() => setAuthed(false)}>
             <LogOut size={15} />
@@ -297,6 +323,70 @@ export default function AdminPage() {
           Last refreshed {new Date().toLocaleTimeString()}
         </p>
       </div>
+
+      {/* Reminder Modal */}
+      {reminderOpen && (
+        <div className="admin-reminder-overlay" onClick={() => { if (!reminderSending) closeReminder(); }}>
+          <div className="admin-reminder" onClick={(e) => e.stopPropagation()}>
+            {reminderDone !== null ? (
+              <div className="admin-reminder__success">
+                <CheckCircle size={44} className="admin-reminder__success-icon" />
+                <p className="admin-reminder__success-title">Emails sent!</p>
+                <p className="admin-reminder__success-sub">Reminder delivered to {reminderDone} registered attendee{reminderDone !== 1 ? 's' : ''}.</p>
+                <button className="admin__btn admin__btn--outline" onClick={closeReminder}>Close</button>
+              </div>
+            ) : (
+              <>
+                <div className="admin-reminder__head">
+                  <div>
+                    <p className="admin-reminder__title">Send Reminder Email</p>
+                    <p className="admin-reminder__sub">{data.length} registered attendee{data.length !== 1 ? 's' : ''} will receive this</p>
+                  </div>
+                  <button className="admin-reminder__close" onClick={closeReminder} disabled={reminderSending} aria-label="Close">
+                    <X size={16} />
+                  </button>
+                </div>
+
+                <div className="admin-reminder__body">
+                  <label className="admin-reminder__label">Subject</label>
+                  <input
+                    className="admin-reminder__input"
+                    value={reminderSubject}
+                    onChange={(e) => setReminderSubject(e.target.value)}
+                    placeholder="Email subject line"
+                    disabled={reminderSending}
+                  />
+                  <label className="admin-reminder__label">Message</label>
+                  <textarea
+                    className="admin-reminder__textarea"
+                    value={reminderMessage}
+                    onChange={(e) => setReminderMessage(e.target.value)}
+                    placeholder="Write your message here…"
+                    rows={8}
+                    disabled={reminderSending}
+                  />
+                  <p className="admin-reminder__hint">
+                    Each email will be personalised with the attendee's first name. Event details are included automatically.
+                  </p>
+                </div>
+
+                <div className="admin-reminder__foot">
+                  <button className="admin__btn admin__btn--ghost" onClick={closeReminder} disabled={reminderSending}>Cancel</button>
+                  <button
+                    className="admin__btn admin__btn--primary"
+                    onClick={handleSendReminder}
+                    disabled={reminderSending || !reminderSubject.trim() || !reminderMessage.trim()}
+                  >
+                    {reminderSending
+                      ? <><RefreshCw size={14} className="admin-spin" /> Sending…</>
+                      : <><Send size={14} /> Send to {data.length} attendee{data.length !== 1 ? 's' : ''}</>}
+                  </button>
+                </div>
+              </>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 }
