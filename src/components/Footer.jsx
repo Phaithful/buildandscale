@@ -193,11 +193,7 @@ export default function Footer() {
           {/* Brand block */}
           <div className="footer__brand">
             <div className="footer__logo">
-              <div className="footer__logo-mark">B&amp;S</div>
-              <div className="footer__logo-text">
-                <span className="footer__logo-title">Build & Scale</span>
-                <span className="footer__logo-year">2026</span>
-              </div>
+              <img src="/Logo.svg" alt="Build & Scale 2026" className="footer__logo-img" />
             </div>
             <div className="footer__socials">
               <a href="#" className="footer__social" aria-label="Instagram"><Instagram size={15} /></a>

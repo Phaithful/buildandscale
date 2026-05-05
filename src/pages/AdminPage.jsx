@@ -123,7 +123,7 @@ export default function AdminPage() {
       <div className="admin-login">
         <div className="admin-login__card">
           <div className="admin-login__logo">
-            <div className="admin-login__logo-mark">B&S</div>
+            <img src="/Logo.svg" alt="Build & Scale 2026" className="admin-login__logo-img" />
           </div>
           <h2 className="admin-login__title">Admin Portal</h2>
           <p className="admin-login__sub">Build & Scale 2026 · Registration Dashboard</p>
@@ -154,7 +154,7 @@ export default function AdminPage() {
       {/* Top bar */}
       <header className="admin__header">
         <div className="admin__header-brand">
-          <div className="admin__header-logo">B&S</div>
+          <img src="/Logo.svg" alt="Build & Scale 2026" className="admin__header-logo-img" />
           <div>
             <p className="admin__header-title">Admin Dashboard</p>
             <p className="admin__header-sub">Build & Scale 2026 · Registrations</p>

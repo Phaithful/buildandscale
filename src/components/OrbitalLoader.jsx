@@ -47,8 +47,7 @@ export default function OrbitalLoader() {
 
       {/* Branding */}
       <div className="orbital-brand">
-        <span className="orbital-brand-title">Build & Scale</span>
-        <span className="orbital-brand-year">2026</span>
+        <img src="/Logo.svg" alt="Build & Scale 2026" className="orbital-brand-logo" />
       </div>
     </motion.div>
   );

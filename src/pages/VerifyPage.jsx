@@ -29,8 +29,7 @@ export default function VerifyPage() {
       <div className="verify__card">
         {/* Brand */}
         <div className="verify__brand">
-          <div className="verify__brand-mark">B&amp;S</div>
-          <span className="verify__brand-label">Build &amp; Scale 2026</span>
+          <img src="/Logo.svg" alt="Build & Scale 2026" className="verify__brand-img" />
         </div>
 
         {status === 'loading' && (
@@ -85,7 +84,7 @@ export default function VerifyPage() {
             </div>
 
             <p className="verify__event">
-              Friday, 30th May 2026 &middot; Peter Mbah Law Auditorium, GO University
+              Saturday, 30th May 2026 &middot; Peter Mbah Law Auditorium, GO University
             </p>
           </>
         )}

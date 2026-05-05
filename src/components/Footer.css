@@ -290,45 +290,11 @@
   gap: 10px;
 }
 
-.footer__logo-mark {
-  width: 32px;
-  height: 32px;
-  background: var(--navy);
-  border: 1px solid rgba(230, 190, 138, 0.3);
-  color: var(--gold);
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-display);
-  font-size: 11px;
-  font-weight: 700;
-  flex-shrink: 0;
-}
-
-.footer__logo-text {
-  display: flex;
-  flex-direction: column;
-  line-height: 1;
-}
-
-.footer__logo-title {
-  font-family: var(--font-display);
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--white);
-  letter-spacing: 0.02em;
-}
-
-.footer__logo-year {
-  font-family: var(--font-body);
-  font-size: 9px;
-  font-weight: 500;
-  letter-spacing: 0.25em;
-  color: var(--gold);
-  opacity: 0.7;
-  margin-top: 2px;
-  text-transform: uppercase;
+.footer__logo-img {
+  height: 28px;
+  width: auto;
+  display: block;
+  filter: brightness(0) invert(1);
 }
 
 .footer__socials {

@@ -56,11 +56,7 @@ export default function Navbar() {
         <div className="navbar__inner container">
           {/* Logo */}
           <Link to="/" className="navbar__logo">
-            <div className="navbar__logo-mark">B&S</div>
-            <div className="navbar__logo-text">
-              <span className="navbar__logo-title">Build & Scale</span>
-              <span className="navbar__logo-year">2026</span>
-            </div>
+            <img src="/Logo.svg" alt="Build & Scale 2026" className="navbar__logo-img" />
           </Link>
 
           {/* Desktop links */}
@@ -103,8 +99,7 @@ export default function Navbar() {
         {/* Header row */}
         <div className="mobile-drawer__header">
           <div className="mobile-drawer__brand">
-            <div className="mobile-drawer__brand-mark">B&amp;S</div>
-            <span className="mobile-drawer__brand-name">Build &amp; Scale</span>
+            <img src="/Logo.svg" alt="Build & Scale 2026" className="mobile-drawer__brand-img" />
           </div>
           <button
             className="mobile-drawer__close"

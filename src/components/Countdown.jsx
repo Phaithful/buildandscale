@@ -66,7 +66,7 @@ export default function Countdown() {
             <TimeBlock value={time.seconds} label="Seconds" />
           </div>
           <p className="countdown__sub reveal delay-3">
-            Friday, 30th May 2026 · Peter Mbah Law Auditorium, Godfrey Okoye University
+            Saturday, 30th May 2026 · Peter Mbah Law Auditorium, Godfrey Okoye University
           </p>
         </div>
       </div>

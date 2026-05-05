@@ -127,7 +127,7 @@ export default function RegisterPage() {
 
           <div className="register-success__detail">
             <span><MapPin size={14} /> Peter Mbah Law Auditorium, GO University</span>
-            <span><Calendar size={14} /> Friday, 30th May 2026 · 8:00 AM</span>
+            <span><Calendar size={14} /> Saturday, 30th May 2026 · 8:00 AM</span>
           </div>
           <Link to="/" className="register-success__back">
             <ArrowLeft size={15} /> Back to Home
@@ -154,7 +154,7 @@ export default function RegisterPage() {
               </div>
               <h1 className="register__title">Secure Your Seat</h1>
               <p className="register__subtitle">
-                Build & Scale 2026 · Friday, 30th May · Peter Mbah Law Auditorium
+                Build & Scale 2026 · Saturday, 30th May · Peter Mbah Law Auditorium
               </p>
             </div>
           </div>
@@ -188,7 +188,7 @@ export default function RegisterPage() {
 
                   <div className="register__info-event">
                     <p className="register__info-event-label">Event Details</p>
-                    <p className="register__info-event-val"><Calendar size={14} /> Friday, 30th May 2026</p>
+                    <p className="register__info-event-val"><Calendar size={14} /> Saturday, 30th May 2026</p>
                     <p className="register__info-event-val"><Clock size={14} /> Registration from 8:00 AM</p>
                     <p className="register__info-event-val"><MapPin size={14} /> Peter Mbah Law Auditorium</p>
                     <p className="register__info-event-val"><GraduationCap size={14} /> Godfrey Okoye University, Enugu</p>

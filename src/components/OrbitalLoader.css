@@ -102,19 +102,8 @@
   gap: 4px;
 }
 
-.orbital-brand-title {
-  font-family: var(--font-display);
-  font-size: 22px;
-  font-weight: 600;
-  color: var(--navy);
-  letter-spacing: 0.04em;
-}
-
-.orbital-brand-year {
-  font-family: var(--font-body);
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.3em;
-  color: var(--tan);
-  text-transform: uppercase;
+.orbital-brand-logo {
+  height: 36px;
+  width: auto;
+  display: block;
 }

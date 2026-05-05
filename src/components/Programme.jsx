@@ -71,7 +71,7 @@ export default function Programme() {
             What Happens <em>On The Day</em>
           </h2>
           <p className="programme__sub">
-            Friday, 30th May 2026 · A full day of building, learning, and connecting.
+            Saturday, 30th May 2026 · A full day of building, learning, and connecting.
           </p>
         </motion.div>
 

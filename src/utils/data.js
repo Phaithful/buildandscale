@@ -73,7 +73,7 @@ export const SPEAKERS = [
     organisation: 'Godfrey Okoye University Allumni',
     session: 'Panelist',
     bio: "Matthew Francisca Kyak is a Nigerian entrepreneur, model, and emerging trainer from Taraba State, driven by growth, resilience, and community impact. A graduate of International Relations from Godfrey Okoye University, she distinguished herself on campus as Miss Godfrey Okoye University 2022, Top Female Model on Campus 2023, and Sanitary Auxiliary for the 2023/2024 academic session. She is the founder of Kyak's Treats, a growing brand, and currently works with the Directorate of Entrepreneurship at Godfrey Okoye University. She also serves as a STEP S Trainer, contributing to capacity development and skills training. Passionate about entrepreneurship and community building, Francisca is committed to creating impact and empowering others, proving that leadership, creativity, and purpose can thrive together in one person.",
-    image: "/images/francisca.PNG",
+    image: "/images/Francisca.PNG",
     initials: 'OO',
   },
   {
@@ -83,7 +83,7 @@ export const SPEAKERS = [
     organisation: 'Founder of VEEJSTORE',
     session: 'Panelist',
     bio: "Nwankwo Chiamaka Vera is a 400-level Law student at Enugu State University of Science and Technology and the founder of VEEJSTORE, a growing brand specializing in gift items and jewelry. Established three years ago, the brand recently marked a significant milestone with the launch of its first physical store. Driven by a passion for entrepreneurship, Vera has intentionally combined her legal education with hands-on business experience, with a long-term goal of becoming a business lawyer. Building her brand without prior mentorship, she has demonstrated resilience, initiative, and a commitment to growth, positioning herself as a role model for young people aspiring to create opportunities for themselves. Her vision is to excel in both law and business, inspiring others to turn ideas into impactful realities.",
-    image: "/images/vera.PNG",
+    image: "/images/Vera.PNG",
     initials: 'NCV',
   },  
   {
@@ -122,7 +122,7 @@ export const FAQS = [
   },
   {
     question: 'Where exactly is the venue?',
-    answer: 'The conference will be held at the Peter Mbah Law Auditorium, Godfrey Okoye University, Enugu. Registration opens at 8:00 AM on Friday, 30th May 2026.',
+    answer: 'The conference will be held at the Peter Mbah Law Auditorium, Godfrey Okoye University, Enugu. Registration opens at 8:00 AM on Saturday, 30th May 2026.',
   },
   {
     question: 'Will certificates be issued?',

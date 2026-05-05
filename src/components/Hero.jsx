@@ -88,7 +88,7 @@ export default function Hero() {
 
             {/* Headline */}
             <motion.h1 className="hero__headline" {...fadeUp(0.18)}>
-              Building Men
+              Building People
               <br />
               <em>Who Build</em>
               <br />
@@ -105,7 +105,7 @@ export default function Hero() {
             <motion.div className="hero__meta" {...fadeUp(0.4)}>
               <div className="hero__meta-item">
                 <Calendar size={15} />
-                <span>Friday, 30th May 2026 · 8:00 AM</span>
+                <span>Saturday, 30th May 2026 · 8:00 AM</span>
               </div>
               <div className="hero__meta-divider" />
               <div className="hero__meta-item">

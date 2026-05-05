@@ -101,8 +101,7 @@
 //                     <div style="display:inline-block;background:rgba(230,190,138,0.15);
 //                                 border:1px solid rgba(230,190,138,0.30);border-radius:8px;
 //                                 padding:8px 16px;">
-//                       <span style="font-family:Georgia,serif;font-size:18px;font-weight:600;
-//                                    color:#E6BE8A;letter-spacing:0.08em;">B&amp;S</span>
+//                       <img src="https://buildandscale2026.vercel.app/logo.png" alt="Build &amp; Scale 2026" width="180" height="50" style="display:block;border:0;" />
 //                     </div>
 //                   </td>
 //                   <td align="right">
@@ -206,7 +205,7 @@
 //                     <table width="100%" cellpadding="0" cellspacing="0" border="0">
 //                       <tr>
 //                         <td style="padding:5px 0;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#85754D;width:80px;vertical-align:top;">Date</td>
-//                         <td style="padding:5px 0;font-size:13px;color:#3a3a5c;"><strong>Friday, 30th May 2026</strong></td>
+//                         <td style="padding:5px 0;font-size:13px;color:#3a3a5c;"><strong>Saturday, 30th May 2026</strong></td>
 //                       </tr>
 //                       <tr>
 //                         <td style="padding:5px 0;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#85754D;vertical-align:top;">Time</td>
@@ -275,7 +274,7 @@
 // }
 // ================================================================
 
-export const SHEET_URL = 'https://script.google.com/macros/s/AKfycbwmpN0J-FxQ0tfXp3RrOEoBQLb-GJCYe7ERCw5AWfhq4Xtkg7dxdNIoqO-Kjh5iIh7NvA/exec'
+export const SHEET_URL = 'https://script.google.com/macros/s/AKfycbyRtmYLqlwYR4gQiASTiSXE8YDso3cAuRyuWo41RUvXYktpH44zIb6wYqU3JwYF4SFb/exec'
 /**
  * Generates a unique registration ID.
  * Format: BS2026-XXXX-YYYY  (e.g. BS2026-LXK4-F9J2)
