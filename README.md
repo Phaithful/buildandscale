@@ -4,8 +4,7 @@
 > A one-day student conference — Saturday, 30th May 2026 · Peter Mbah Law Auditorium, Godfrey Okoye University, Enugu, Nigeria.
 
 [![Live Site](https://img.shields.io/badge/Live%20Site-buildandscale2026.vercel.app-000080?style=flat-square&logo=vercel)](https://buildandscale2026.vercel.app)
-[![React](https://img.shields.io/badge/React-18-61DAFB?style=flat-square&logo=react)](https://reactjs.org)
-[![License](https://img.shields.io/badge/License-MIT-85754D?style=flat-square)](LICENSE)
+
 
 ---
 
@@ -52,7 +51,6 @@ Build & Scale 2026 is the official conference website for a one-day student even
 | `/` | Home — Hero, Countdown, Stats, Speakers, Programme, FAQ, Contact, Footer |
 | `/register` | Registration form → Google Sheets → confirmation email with QR code |
 | `/verify?id=BS2026-XXXX` | QR scan landing page — confirms a registration live |
-| `/admin` | Password-protected dashboard (password: `Admin2357`) |
 
 ---
 
