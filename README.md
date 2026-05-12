@@ -11,6 +11,7 @@
 ## Overview
 
 Build & Scale 2026 is the official conference website for a one-day student event focused on entrepreneurship, leadership, and personal development. The site handles everything from public-facing event information to attendee registration, QR-code-based check-in, and a password-protected admin dashboard — all backed by Google Sheets with no traditional server required.
+Testing git push, just ignore
 
 **Lead Convener:** Azua Suurshater Stephen · 400 Level, Godfrey Okoye University
 **Instagram:** [@buildandscale.ng](https://www.instagram.com/buildandscale.ng/)
