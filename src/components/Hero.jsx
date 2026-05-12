@@ -14,11 +14,36 @@ const SPONSORS = [
     src: "/images/sponsors/azua_photography.png",
     height: 100,
   },
-  { name: "Enugu SME", src: "/images/sponsors/enugu-sme-logo.88c278f3.svg" },
-  { name: "ESG", src: "/images/sponsors/esg-logo.5e44c702.svg" },
-  { name: "ODE", src: "/images/sponsors/ode-logo.68d565cf.svg" },
-  { name: "Peter Mbah", src: "/images/sponsors/peter-mbah-logo.f77990af.svg" },
-  { name: "The Garage", src: "/images/sponsors/the-garage-logo.9cd53ada.svg" },
+  {
+    name: "Azua Photography",
+    src: "/images/sponsors/azua_photography.png",
+    height: 100,
+  },
+  {
+    name: "Azua Photography",
+    src: "/images/sponsors/azua_photography.png",
+    height: 100,
+  },
+  {
+    name: "Azua Photography",
+    src: "/images/sponsors/azua_photography.png",
+    height: 100,
+  },
+  {
+    name: "Azua Photography",
+    src: "/images/sponsors/azua_photography.png",
+    height: 100,
+  },
+  {
+    name: "Azua Photography",
+    src: "/images/sponsors/azua_photography.png",
+    height: 100,
+  },
+  // { name: "Enugu SME", src: "/images/sponsors/enugu-sme-logo.88c278f3.svg" },
+  // { name: "ESG", src: "/images/sponsors/esg-logo.5e44c702.svg" },
+  // { name: "ODE", src: "/images/sponsors/ode-logo.68d565cf.svg" },
+  // { name: "Peter Mbah", src: "/images/sponsors/peter-mbah-logo.f77990af.svg" },
+  // { name: "The Garage", src: "/images/sponsors/the-garage-logo.9cd53ada.svg" },
 ];
 
 const fadeUp = (delay = 0) => ({
