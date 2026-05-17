@@ -29,7 +29,7 @@ export const SPEAKERS = [
   {
     id: 3,
     name: 'Olaedo Unah',
-    title: 'Creative Force',
+    title: 'Visual Storyteller',
     organisation: 'GGG Media',
     session: 'Panelist',
     bio: "Olaedo Unah is a Law student, Associate Arbitrator with the Nigerian Institute of Chartered Arbitrators, and visual storyteller. She is the creative force behind GGG Media and founder of TheBlackNWhite, a platform simplifying legal concepts through video. She also produced the first documentary tour of GOUNI's campus, carving a distinctive path in law, education, and storytelling.",
