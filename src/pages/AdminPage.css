@@ -678,3 +678,299 @@
   color: var(--slate);
   margin: 0 0 8px;
 }
+
+/* ── Tabs ───────────────────────────────────────────────────── */
+.admin__tabs {
+  display: flex;
+  gap: 0;
+  border-bottom: 2px solid var(--border);
+  margin-bottom: 24px;
+}
+
+.admin__tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 11px 20px;
+  font-family: var(--font-body);
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--text-muted);
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  cursor: pointer;
+  transition: color 0.18s, border-color 0.18s;
+  white-space: nowrap;
+}
+
+.admin__tab:hover {
+  color: var(--navy);
+}
+
+.admin__tab--active {
+  color: var(--navy);
+  border-bottom-color: var(--navy);
+  font-weight: 600;
+}
+
+.admin__tab-badge {
+  background: rgba(0, 0, 128, 0.08);
+  color: var(--navy);
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 100px;
+  margin-left: 2px;
+  transition: background 0.18s, color 0.18s;
+}
+
+.admin__tab--active .admin__tab-badge {
+  background: var(--navy);
+  color: var(--white);
+}
+
+/* ── Add student form ───────────────────────────────────────── */
+.sec-add {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 20px 24px;
+  margin-bottom: 16px;
+}
+
+.sec-add__title {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+}
+
+.sec-add__form {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.sec-add__input {
+  flex: 1;
+  min-width: 200px;
+  background: var(--cream);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 10px 14px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--text-primary);
+  outline: none;
+  transition: var(--transition);
+}
+
+.sec-add__input:focus {
+  border-color: var(--navy);
+  background: var(--white);
+  box-shadow: 0 0 0 3px rgba(0, 0, 128, 0.06);
+}
+
+.sec-add__select {
+  background: var(--cream);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 10px 32px 10px 14px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--text-primary);
+  outline: none;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23708090' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  transition: var(--transition);
+}
+
+.sec-add__select:focus {
+  border-color: var(--navy);
+  background-color: var(--white);
+}
+
+.sec-add__error {
+  font-size: 12px;
+  color: #e53e3e;
+  margin-top: 10px;
+  font-weight: 500;
+}
+
+/* ── Secondary mini-stats ───────────────────────────────────── */
+.sec-stats {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.sec-stat {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 14px 22px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 80px;
+  transition: box-shadow 0.15s ease;
+}
+
+.sec-stat:hover {
+  box-shadow: var(--shadow-sm);
+}
+
+.sec-stat--checked {
+  border-color: rgba(34, 160, 107, 0.4);
+  background: #f0faf6;
+}
+
+.sec-stat__val {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1;
+}
+
+.sec-stat--checked .sec-stat__val {
+  color: #22a06b;
+}
+
+.sec-stat__lbl {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 5px;
+  font-weight: 500;
+}
+
+/* ── Student list ───────────────────────────────────────────── */
+.sec-list {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+.sec-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 64px 20px;
+  color: var(--text-muted);
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.sec-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 20px;
+  border-bottom: 1px solid rgba(0, 0, 128, 0.05);
+  cursor: pointer;
+  transition: background 0.15s ease;
+  outline: none;
+}
+
+.sec-row:last-child {
+  border-bottom: none;
+}
+
+.sec-row:hover {
+  background: rgba(0, 0, 128, 0.025);
+}
+
+.sec-row:focus-visible {
+  box-shadow: inset 0 0 0 2px var(--navy);
+}
+
+.sec-row--checked {
+  background: rgba(34, 160, 107, 0.04);
+}
+
+.sec-row--checked:hover {
+  background: rgba(34, 160, 107, 0.08);
+}
+
+.sec-row__check {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 2px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.18s ease, border-color 0.18s ease, color 0.18s ease;
+  color: transparent;
+}
+
+.sec-row__check--on {
+  background: #22a06b;
+  border-color: #22a06b;
+  color: #fff;
+}
+
+.sec-row__name {
+  flex: 1;
+  font-weight: 500;
+  color: var(--text-primary);
+  font-size: 14px;
+  transition: color 0.15s;
+}
+
+.sec-row--checked .sec-row__name {
+  color: var(--text-muted);
+}
+
+.sec-row__status {
+  font-size: 11px;
+  font-weight: 600;
+  color: #22a06b;
+  background: rgba(34, 160, 107, 0.12);
+  padding: 3px 10px;
+  border-radius: 100px;
+  white-space: nowrap;
+}
+
+.sec-row__time {
+  font-size: 11.5px;
+  color: var(--slate-light);
+  white-space: nowrap;
+}
+
+/* Class badges for SS1 / SS2 / SS3 in the secondary tab */
+.admin__badge--ss1 {
+  background: rgba(0, 0, 128, 0.07);
+  color: #00005a;
+}
+
+.admin__badge--ss2 {
+  background: rgba(133, 117, 77, 0.12);
+  color: var(--tan);
+}
+
+.admin__badge--ss3 {
+  background: rgba(230, 190, 138, 0.25);
+  color: #7a5200;
+}
+
+@media (max-width: 560px) {
+  .sec-row__time { display: none; }
+  .sec-add__form { flex-direction: column; align-items: stretch; }
+  .sec-add__select { width: 100%; }
+}
