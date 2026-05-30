@@ -4,4 +4,5 @@ temp_interactive_push.bat
 
 
 node_modules/
-build/
+build/.gitignore
+config.bat
