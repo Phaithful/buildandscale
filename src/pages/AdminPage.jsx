@@ -1,15 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import {
   LogOut, RefreshCw, Download, Users, TrendingUp, School,
-  Search, ChevronUp, ChevronDown, Send, CheckCircle, X, UserPlus, BookOpen,
-} from 'lucide-react';
-import {
-  fetchRegistrations, sendReminderEmails, SHEET_URL,
-  fetchSecondaryStudents, submitSecondaryStudent, updateSecondaryCheckIn,
-  generateSecStudentId,
-} from '../utils/googleSheets';
-import {
-  LogOut, RefreshCw, Download, Users, TrendingUp, School,
   Search, ChevronUp, ChevronDown, Send, CheckCircle, X, UserPlus, BookOpen, UserCheck,
 } from 'lucide-react';
 import {
