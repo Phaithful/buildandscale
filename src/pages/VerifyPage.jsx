@@ -1,25 +1,34 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
-import { CheckCircle, XCircle, Loader, ArrowLeft, User, Mail, Phone, Building, GraduationCap, Hash } from 'lucide-react';
-import { fetchRegistrations } from '../utils/googleSheets';
+import { CheckCircle, XCircle, Loader, ArrowLeft, User, Mail, Phone, Building, GraduationCap, Hash, Clock } from 'lucide-react';
+import { fetchRegistrations, markAttendance } from '../utils/googleSheets';
 import './VerifyPage.css';
 
 export default function VerifyPage() {
   const [params] = useSearchParams();
   const id = params.get('id');
 
-  const [status, setStatus] = useState('loading'); // loading | found | not-found | error
+  const [status, setStatus] = useState('loading'); // loading | checked-in | already-in | not-found | error
   const [attendee, setAttendee] = useState(null);
 
   useEffect(() => {
-    document.title = 'Verify Registration — Build & Scale 2026';
+    document.title = 'Check-In — Build & Scale 2026';
     if (!id) { setStatus('not-found'); return; }
 
     fetchRegistrations()
       .then((rows) => {
         const match = rows.find((r) => r['Registration ID'] === id);
-        if (match) { setAttendee(match); setStatus('found'); }
-        else setStatus('not-found');
+        if (!match) { setStatus('not-found'); return; }
+
+        setAttendee(match);
+
+        const alreadyCheckedIn = (match['Checked In'] || '').toString().trim();
+        if (alreadyCheckedIn) {
+          setStatus('already-in');
+        } else {
+          markAttendance(id).catch(() => {});
+          setStatus('checked-in');
+        }
       })
       .catch(() => setStatus('error'));
   }, [id]);
@@ -27,7 +36,6 @@ export default function VerifyPage() {
   return (
     <div className="verify">
       <div className="verify__card">
-        {/* Brand */}
         <div className="verify__brand">
           <img src="/Logo.svg" alt="Build & Scale 2026" className="verify__brand-img" />
         </div>
@@ -39,13 +47,28 @@ export default function VerifyPage() {
           </div>
         )}
 
-        {status === 'found' && (
+        {(status === 'checked-in' || status === 'already-in') && attendee && (
           <>
-            <div className="verify__confirmed">
-              <CheckCircle size={48} />
-            </div>
-            <h1 className="verify__title">Registration Confirmed</h1>
-            <p className="verify__subtitle">Valid attendee for Build &amp; Scale 2026</p>
+            {status === 'checked-in' ? (
+              <>
+                <div className="verify__confirmed">
+                  <CheckCircle size={48} />
+                </div>
+                <h1 className="verify__title">Checked In</h1>
+                <p className="verify__subtitle">Attendance recorded &mdash; Build &amp; Scale 2026</p>
+              </>
+            ) : (
+              <>
+                <div className="verify__already">
+                  <Clock size={48} />
+                </div>
+                <h1 className="verify__title verify__title--already">Already Checked In</h1>
+                <p className="verify__subtitle">
+                  Attendance was previously recorded
+                  {attendee['Checked In'] ? ` · ${attendee['Checked In']}` : ''}
+                </p>
+              </>
+            )}
 
             <div className="verify__details">
               <div className="verify__details-header">Attendee Details</div>
@@ -84,7 +107,7 @@ export default function VerifyPage() {
             </div>
 
             <p className="verify__event">
-              Saturday, 30th May 2026 &middot; Peter Mbah Law Auditorium, GO University
+              Friday, 30th May 2026 &middot; Peter Mbah Law Auditorium, GO University
             </p>
           </>
         )}

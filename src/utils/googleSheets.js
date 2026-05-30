@@ -376,6 +376,57 @@ export async function fetchRegistrations() {
   );
 }
 
+export async function markAttendance(regId) {
+  await fetch(SHEET_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ type: 'checkIn', regId }),
+  });
+  return { success: true };
+}
+
+// ================================================================
+// APPS SCRIPT ADDITION — ATTENDANCE CHECK-IN
+// ================================================================
+// Add this handler inside doPost, BEFORE the existing
+// `if (data.type === 'contact')` block:
+//
+//   // ── QR scan check-in ──────────────────────────────────────────
+//   if (data.type === 'checkIn') {
+//     const sheet   = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+//     const rows    = sheet.getDataRange().getValues();
+//     const headers = rows[0];
+//     const regIdCol = headers.indexOf('Registration ID');
+//     let checkedInCol = headers.indexOf('Checked In');
+//
+//     // Auto-create the column if it does not exist yet
+//     if (checkedInCol === -1) {
+//       checkedInCol = headers.length;
+//       sheet.getRange(1, checkedInCol + 1).setValue('Checked In');
+//     }
+//
+//     for (var i = 1; i < rows.length; i++) {
+//       if ((rows[i][regIdCol] || '').toString() === data.regId) {
+//         var already = (rows[i][checkedInCol] || '').toString();
+//         if (!already) {
+//           var ts = new Date().toLocaleString('en-NG', { timeZone: 'Africa/Lagos' });
+//           sheet.getRange(i + 1, checkedInCol + 1).setValue(ts);
+//         }
+//         return ContentService
+//           .createTextOutput(JSON.stringify({ result: already ? 'already' : 'success' }))
+//           .setMimeType(ContentService.MimeType.JSON);
+//       }
+//     }
+//     return ContentService
+//       .createTextOutput(JSON.stringify({ result: 'not-found' }))
+//       .setMimeType(ContentService.MimeType.JSON);
+//   }
+//
+// Then redeploy: Deploy → Manage deployments → edit → Deploy.
+// The Checked In column will be created automatically on the first scan.
+// ================================================================
+
 // ================================================================
 // APPS SCRIPT ADDITIONS — SECONDARY SCHOOL STUDENTS
 // ================================================================

@@ -68,6 +68,24 @@
   color: #c00;
 }
 
+.verify__title--already {
+  color: var(--tan);
+}
+
+.verify__already {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: rgba(133, 117, 77, 0.08);
+  border: 1px solid rgba(133, 117, 77, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--tan);
+  margin-bottom: 20px;
+  animation: verifyPop 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 .verify__subtitle {
   font-size: 14px;
   color: var(--text-muted);

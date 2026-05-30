@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import {
   LogOut, RefreshCw, Download, Users, TrendingUp, School,
-  Search, ChevronUp, ChevronDown, Send, CheckCircle, X, UserPlus, BookOpen,
+  Search, ChevronUp, ChevronDown, Send, CheckCircle, X, UserPlus, BookOpen, UserCheck,
 } from 'lucide-react';
 import {
   fetchRegistrations, sendReminderEmails, SHEET_URL,
@@ -129,6 +129,7 @@ export default function AdminPage() {
   const uniStudents = data.filter((r) => r.Level && !['SS1', 'SS2', 'SS3'].includes(r.Level)).length;
   const secStudentsInReg = data.filter((r) => ['SS1', 'SS2', 'SS3'].includes(r.Level)).length;
   const institutions = [...new Set(data.map((r) => r.Institution).filter(Boolean))].length;
+  const checkedInCount = data.filter((r) => (r['Checked In'] || '').toString().trim()).length;
   const levels = ['All', ...new Set(data.map((r) => r.Level).filter(Boolean))].sort();
 
   const filtered = data
@@ -383,6 +384,12 @@ export default function AdminPage() {
               value={`${Math.round((data.length / 100) * 100)}%`}
               sub="of 100 seats"
             />
+            <StatCard
+              icon={<UserCheck size={20} />}
+              label="Checked In"
+              value={checkedInCount}
+              sub={`of ${data.length} registered`}
+            />
           </div>
         )}
 
@@ -444,7 +451,7 @@ export default function AdminPage() {
                 <table className="admin__table">
                   <thead>
                     <tr>
-                      {['#', 'Full Name', 'Email', 'Phone', 'Institution', 'Level', 'Referral', 'Registration ID', 'Timestamp'].map((h) => (
+                      {['#', 'Full Name', 'Email', 'Phone', 'Institution', 'Level', 'Referral', 'Registration ID', 'Checked In', 'Timestamp'].map((h) => (
                         <th
                           key={h}
                           className={`admin__th ${h !== '#' ? 'admin__th--sortable' : ''}`}
@@ -477,6 +484,13 @@ export default function AdminPage() {
                         </td>
                         <td className="admin__td admin__td--muted">{row.Referral || '—'}</td>
                         <td className="admin__td admin__td--muted" style={{ fontFamily: 'monospace', fontSize: '12px', letterSpacing: '0.06em' }}>{row['Registration ID'] || '—'}</td>
+                        <td className="admin__td">
+                          {(row['Checked In'] || '').toString().trim() ? (
+                            <span className="admin__badge admin__badge--present" title={row['Checked In']}>Present</span>
+                          ) : (
+                            <span className="admin__badge admin__badge--absent">Absent</span>
+                          )}
+                        </td>
                         <td className="admin__td admin__td--muted">{row.Timestamp || '—'}</td>
                       </tr>
                     ))}
