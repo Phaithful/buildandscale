@@ -1,6 +1,15 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import {
   LogOut, RefreshCw, Download, Users, TrendingUp, School,
+  Search, ChevronUp, ChevronDown, Send, CheckCircle, X, UserPlus, BookOpen,
+} from 'lucide-react';
+import {
+  fetchRegistrations, sendReminderEmails, SHEET_URL,
+  fetchSecondaryStudents, submitSecondaryStudent, updateSecondaryCheckIn,
+  generateSecStudentId,
+} from '../utils/googleSheets';
+import {
+  LogOut, RefreshCw, Download, Users, TrendingUp, School,
   Search, ChevronUp, ChevronDown, Send, CheckCircle, X, UserPlus, BookOpen, UserCheck,
 } from 'lucide-react';
 import {
@@ -384,12 +393,6 @@ export default function AdminPage() {
               value={`${Math.round((data.length / 100) * 100)}%`}
               sub="of 100 seats"
             />
-            <StatCard
-              icon={<UserCheck size={20} />}
-              label="Checked In"
-              value={checkedInCount}
-              sub={`of ${data.length} registered`}
-            />
           </div>
         )}
 
@@ -451,7 +454,7 @@ export default function AdminPage() {
                 <table className="admin__table">
                   <thead>
                     <tr>
-                      {['#', 'Full Name', 'Email', 'Phone', 'Institution', 'Level', 'Referral', 'Registration ID', 'Checked In', 'Timestamp'].map((h) => (
+                      {['#', 'Full Name', 'Email', 'Phone', 'Institution', 'Level', 'Referral', 'Registration ID', 'Timestamp'].map((h) => (
                         <th
                           key={h}
                           className={`admin__th ${h !== '#' ? 'admin__th--sortable' : ''}`}
@@ -484,13 +487,6 @@ export default function AdminPage() {
                         </td>
                         <td className="admin__td admin__td--muted">{row.Referral || '—'}</td>
                         <td className="admin__td admin__td--muted" style={{ fontFamily: 'monospace', fontSize: '12px', letterSpacing: '0.06em' }}>{row['Registration ID'] || '—'}</td>
-                        <td className="admin__td">
-                          {(row['Checked In'] || '').toString().trim() ? (
-                            <span className="admin__badge admin__badge--present" title={row['Checked In']}>Present</span>
-                          ) : (
-                            <span className="admin__badge admin__badge--absent">Absent</span>
-                          )}
-                        </td>
                         <td className="admin__td admin__td--muted">{row.Timestamp || '—'}</td>
                       </tr>
                     ))}

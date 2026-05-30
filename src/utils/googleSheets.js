@@ -532,3 +532,109 @@ export async function updateSecondaryCheckIn({ studentId, checkedIn }) {
   });
   return { success: true };
 }
+
+// ================================================================
+// APPS SCRIPT ADDITIONS — SECONDARY SCHOOL STUDENTS
+// ================================================================
+// Add the following snippets to your existing Apps Script.
+//
+// STEP 1 — Change `function doGet()` → `function doGet(e)` and
+// prepend this block at the very top of doGet:
+//
+// function doGet(e) {
+//   if (e && e.parameter && e.parameter.type === 'secondary') {
+//     const ss = SpreadsheetApp.getActiveSpreadsheet();
+//     const sheet2 = ss.getSheetByName('Secondary Students');
+//     if (!sheet2) {
+//       return ContentService.createTextOutput(JSON.stringify([[]])).setMimeType(ContentService.MimeType.JSON);
+//     }
+//     const rows = sheet2.getDataRange().getValues();
+//     return ContentService.createTextOutput(JSON.stringify(rows)).setMimeType(ContentService.MimeType.JSON);
+//   }
+//   // existing doGet body continues below (getActiveSheet / getDataRange)...
+//
+// STEP 2 — Add these two handlers at the TOP of doPost, before the
+// existing `if (data.type === 'contact')` block:
+//
+//   // ── Secondary student add ─────────────────────────────────────
+//   if (data.type === 'secondary') {
+//     const ss = SpreadsheetApp.getActiveSpreadsheet();
+//     let sheet2 = ss.getSheetByName('Secondary Students');
+//     if (!sheet2) {
+//       sheet2 = ss.insertSheet('Secondary Students');
+//       sheet2.appendRow(['Timestamp', 'Full Name', 'Class', 'Student ID', 'Checked In']);
+//     }
+//     sheet2.appendRow([
+//       new Date().toLocaleString('en-NG', { timeZone: 'Africa/Lagos' }),
+//       data.name,
+//       data.secClass,
+//       data.studentId,
+//       'FALSE',
+//     ]);
+//     return ContentService
+//       .createTextOutput(JSON.stringify({ result: 'success' }))
+//       .setMimeType(ContentService.MimeType.JSON);
+//   }
+//
+//   // ── Secondary student check-in toggle ─────────────────────────
+//   if (data.type === 'secondaryCheckIn') {
+//     const ss = SpreadsheetApp.getActiveSpreadsheet();
+//     const sheet2 = ss.getSheetByName('Secondary Students');
+//     if (sheet2) {
+//       const rows = sheet2.getDataRange().getValues();
+//       const idCol  = rows[0].indexOf('Student ID');
+//       const ciCol  = rows[0].indexOf('Checked In');
+//       for (let i = 1; i < rows.length; i++) {
+//         if ((rows[i][idCol] || '').toString() === data.studentId) {
+//           sheet2.getRange(i + 1, ciCol + 1).setValue(data.checkedIn ? 'TRUE' : 'FALSE');
+//           break;
+//         }
+//       }
+//     }
+//     return ContentService
+//       .createTextOutput(JSON.stringify({ result: 'success' }))
+//       .setMimeType(ContentService.MimeType.JSON);
+//   }
+//
+// STEP 3 — Redeploy: Deploy → Manage deployments → edit the current
+// deployment → Deploy. The URL stays the same.
+// ================================================================
+
+export function generateSecStudentId() {
+  const t = Date.now().toString(36).slice(-4).toUpperCase();
+  const r = Math.random().toString(36).slice(2, 5).toUpperCase();
+  return `SEC-${t}-${r}`;
+}
+
+export async function submitSecondaryStudent({ name, secClass, studentId }) {
+  await fetch(SHEET_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ type: 'secondary', name, secClass, studentId }),
+  });
+  return { success: true };
+}
+
+export async function fetchSecondaryStudents() {
+  const response = await fetch(`${SHEET_URL}?type=secondary`);
+  const data = await response.json();
+  if (!Array.isArray(data) || data.length === 0) return [];
+  const headers = data[0];
+  // If the returned headers look like the main sheet (has Email col),
+  // the Apps Script hasn't been updated yet — return empty.
+  if (!Array.isArray(headers) || !headers.includes('Student ID')) return [];
+  return data.slice(1).map((row) =>
+    Object.fromEntries(headers.map((h, i) => [h, row[i] ?? '']))
+  );
+}
+
+export async function updateSecondaryCheckIn({ studentId, checkedIn }) {
+  await fetch(SHEET_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ type: 'secondaryCheckIn', studentId, checkedIn }),
+  });
+  return { success: true };
+}
